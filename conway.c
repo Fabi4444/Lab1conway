@@ -97,12 +97,12 @@ int main(void)
 	while(round < ROUNDS && !kbhit()){
 		for(y = 0; y< YMAX; y++){
 			for(x = 0; x< XMAX; x++){
-				gotoxy(0,0);
-				cprintf("%2d %2d",x , y);
+				//gotoxy(0,0);
+				//cprintf("%2d %2d",x , y);
 				findNachbarn(x,y,spielfeld,nachbarn);
 				lebende = zaehlLebende(nachbarn);
-				gotoxy(x,y);
-				cprintf("%d",lebende /7 );
+				//gotoxy(x,y);
+				//cprintf("%d",lebende /7 );
 				pruefeRegeln(x,y,lebende, temp, spielfeld);
 			}// for x
 		}// for y
@@ -144,6 +144,7 @@ int main(void)
 
 void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX], int spielfeld[][YMAX]){
 	//hier kommen meine regeln
+	/*
 	if(spielfeld[x][y] == 0 ){
 		if(lebende == 3){
 			temp[x][y] = 1;
@@ -172,6 +173,27 @@ void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX], int spielfeld[][
 		if(lebende > 3){					
 			temp[x][y] = 0;
 //			printf(">3\n\n");
+		}
+		
+	}
+	*/
+
+	if (spielfeld[x][y] == 0)
+	{
+		if (lebende == 3) {
+			temp[x][y] = 1;
+			//			printf("t3\n\n");
+		}
+	}
+
+	if (spielfeld[x][y] == 1) {
+		if (lebende == 2 || lebende == 3) {
+			temp[x][y] = 1;
+			//			printf("=2\n\n");
+		}
+		if (lebende < 2 || lebende > 3) {
+			temp[x][y] = 0;
+			//			printf("<2\n\n");
 		}
 	}
 }
