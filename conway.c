@@ -206,15 +206,15 @@ int zaehlLebende(int nachbarn[][BOXSIZE]){
 		for(ix = 0; ix < BOXSIZE; ix++){
 			//prüfe dass wir nicht auf unserer eigneen position sind
 			
-		  flag = 3 * 7 ;
+		  flag = 21;
 			
 			if(ix != 1){
-			flag += 1 * 7;
+			flag += 7;
 			}
-			if(iy != 1 * 7){
+			if(iy != 7){
 			flag +=2;
 			}
-			if(flag >3 * 7){
+			if(flag > 21){
 				lebende += nachbarn[ix][iy] * 7;
 			}
 		}//for ix
