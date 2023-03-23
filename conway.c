@@ -196,7 +196,7 @@ void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]
 		x2 = 0;
 	}
 	if (y0 < 0) {
-		y0 = YMAX
+		y0 = YMAX;
 	}
 	if (y2 > YMAX) {
 		y2 = 0;
