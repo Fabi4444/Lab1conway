@@ -14,7 +14,7 @@
 #define XMAX 40
 #define YMAX 25
 #define BOXSIZE 3
-#define ROUNDS 100
+#define ROUNDS 1
 
 void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]);
 void initSpielfeld(int spielfeld [][YMAX]);
