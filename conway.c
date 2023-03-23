@@ -184,10 +184,10 @@ int zaehlLebende(char nachbarn[][BOXSIZE]){
 
 void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]){
 	//gehe über alle nachbarn
-	char x0 = x-1;
-	char x2 = x+1;
-	char y0 = y-1;
-	char y2 = y+1;
+	signed char x0 = x-1;
+	signed char x2 = x+1;
+	signed char y0 = y-1;
+	signed char y2 = y+1;
 
 	if (x0 < 0) {
 		x0 = XMAX;
@@ -196,7 +196,7 @@ void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]
 		x2 = 0;
 	}
 	if (y0 < 0) {
-		y0 = YMAX
+		y0 = YMAX;
 	}
 	if (y2 > YMAX) {
 		y2 = 0;

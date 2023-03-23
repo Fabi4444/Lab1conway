@@ -58,6 +58,7 @@ gotoxy entfernt | 38,5s | 0,0
 Fehler ausgebessert | 39,1s | 0,0
 Arrays von int auf char | 37,6s | 0,0
 zähle lebende verbessert | 28,8 | 0,0
+finde Nachbarn ohne Loop | 15,8 | 0,0
 
 
 ### Debugger ausgaben auskommentieren
@@ -76,3 +77,6 @@ Wir haben einen Fehler im Programm ausgebessert, der einer anderen Gruppe aufgef
 
 ### Arrays von int auf char
 Da char nur 1 byte zur speicherung bzw. berechnung benötigt ist es schneller char arrays anstelle von integers zu verwenden.
+
+### Zähle lebende & finde nachbarn
+Die innefizenten for loop durch hard codet jede zelle einzeln
