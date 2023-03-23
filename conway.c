@@ -142,7 +142,7 @@ int main(void)
 
 
 
-void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX], int spielfeld[][YMAX]){
+void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[][YMAX]){
 	//hier kommen meine regeln
 	/*
 	if(spielfeld[x][y] == 0 ){
@@ -199,7 +199,7 @@ void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX], int spielfeld[][
 }
 
 
-int zaehlLebende(int nachbarn[][BOXSIZE]){
+int zaehlLebende(char nachbarn[][BOXSIZE]){
   int lebende = 0;
   int iy, ix, flag;
 	for(iy= 0; iy < BOXSIZE ; iy++){
@@ -224,7 +224,7 @@ int zaehlLebende(int nachbarn[][BOXSIZE]){
 
 
 
-void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]){
+void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]){
 	//gehe über alle nachbarn
 	unsigned int osx, ix;
 	unsigned int osy, iy; 
@@ -264,7 +264,7 @@ void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]){
 
 
 
-void printSpielfeld(int spielfeld [][YMAX]){
+void printSpielfeld(char spielfeld [][YMAX]){
 	long int x,y;
 	for(y = 0; y< YMAX; y++){
 		for(x = 0; x< XMAX; x++){
@@ -280,7 +280,7 @@ void printSpielfeld(int spielfeld [][YMAX]){
 
 
 
-void initSpielfeld(int spielfeld [][YMAX]){
+void initSpielfeld(char spielfeld [][YMAX]){
 	long int x,y;
 	//fülle das feld mit zufallswerten und gibs aus
 	for(y = 0; y< YMAX; y++){
