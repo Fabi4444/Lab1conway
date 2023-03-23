@@ -57,6 +57,7 @@ Prüferegeln neu geschrieben | 39,0 s | 0,0
 gotoxy entfernt | 38,5s | 0,0
 Fehler ausgebessert | 39,1s | 0,0
 Arrays von int auf char | 37,6s | 0,0
+zähle lebende verbessert | 28,8 | 0,0
 
 
 ### Debugger ausgaben auskommentieren
