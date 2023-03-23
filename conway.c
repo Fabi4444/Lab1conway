@@ -230,7 +230,7 @@ void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]){
 	unsigned int osy, iy; 
 	signed int ofy;
 	signed int ofx;
-	long int temp;
+	char int temp;
 	
 	for(ofy = y-1, iy=0; ofy <= (signed int)y+1; ++ofy , ++iy){
 		for(ofx = x-1,ix = 0; ofx <= (signed int)x+1; ++ofx , ++ix){
@@ -265,7 +265,7 @@ void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]){
 
 
 void printSpielfeld(int spielfeld [][YMAX]){
-	long int x,y;
+	char int x,y;
 	for(y = 0; y< YMAX; y++){
 		for(x = 0; x< XMAX; x++){
 			if(spielfeld[x][y] == 1){
@@ -281,7 +281,7 @@ void printSpielfeld(int spielfeld [][YMAX]){
 
 
 void initSpielfeld(int spielfeld [][YMAX]){
-	long int x,y;
+	char int x,y;
 	//fülle das feld mit zufallswerten und gibs aus
 	for(y = 0; y< YMAX; y++){
 		for(x = 0; x< XMAX; x++){
