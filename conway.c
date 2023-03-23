@@ -16,11 +16,11 @@
 #define BOXSIZE 3
 #define ROUNDS 1
 
-void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]);
-void initSpielfeld(int spielfeld [][YMAX]);
-void printSpielfeld(int spielfeld [][YMAX]);
-int zaehlLebende(int nachbarn[][BOXSIZE]);
-void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX], int spielfeld[][YMAX]);
+void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]);
+void initSpielfeld(char spielfeld [][YMAX]);
+void printSpielfeld(char spielfeld [][YMAX]);
+int zaehlLebende(char nachbarn[][BOXSIZE]);
+void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[][YMAX]);
 
 //static const char array[XMAX][YMAX] 
 const static int array[XMAX][YMAX]= {
@@ -66,9 +66,9 @@ const static int array[XMAX][YMAX]= {
 {0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0},
 };
 
-static int spielfeld[XMAX][YMAX];
-static int temp[XMAX][YMAX];
-static int nachbarn[BOXSIZE][BOXSIZE];
+static char spielfeld[XMAX][YMAX];
+static char temp[XMAX][YMAX];
+static char nachbarn[BOXSIZE][BOXSIZE];
 
 int main(void)
 {
@@ -142,7 +142,7 @@ int main(void)
 
 
 
-void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX], int spielfeld[][YMAX]){
+void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[][YMAX]){
 	//hier kommen meine regeln
 	/*
 	if(spielfeld[x][y] == 0 ){
@@ -199,7 +199,7 @@ void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX], int spielfeld[][
 }
 
 
-int zaehlLebende(int nachbarn[][BOXSIZE]){
+int zaehlLebende(char nachbarn[][BOXSIZE]){
   int lebende = 0;
   int iy, ix, flag;
 	for(iy= 0; iy < BOXSIZE ; iy++){
@@ -224,7 +224,7 @@ int zaehlLebende(int nachbarn[][BOXSIZE]){
 
 
 
-void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]){
+void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]){
 	//gehe über alle nachbarn
 	unsigned int osx, ix;
 	unsigned int osy, iy; 
@@ -240,10 +240,10 @@ void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]){
 			}
 			else if( ofy > YMAX-1)	{
 					osy = 0;
-				}
-				else {
+			}
+			else {
 					osy = ofy;
-				}
+			}
 			
 			
 			if( ofx < 0)	{
@@ -264,8 +264,8 @@ void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]){
 
 
 
-void printSpielfeld(int spielfeld [][YMAX]){
-	char int x,y;
+void printSpielfeld(char spielfeld [][YMAX]){
+	long int x,y;
 	for(y = 0; y< YMAX; y++){
 		for(x = 0; x< XMAX; x++){
 			if(spielfeld[x][y] == 1){
@@ -280,8 +280,8 @@ void printSpielfeld(int spielfeld [][YMAX]){
 
 
 
-void initSpielfeld(int spielfeld [][YMAX]){
-	char int x,y;
+void initSpielfeld(char spielfeld [][YMAX]){
+	long int x,y;
 	//fülle das feld mit zufallswerten und gibs aus
 	for(y = 0; y< YMAX; y++){
 		for(x = 0; x< XMAX; x++){
