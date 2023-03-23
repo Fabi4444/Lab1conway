@@ -14,7 +14,7 @@
 #define XMAX 40
 #define YMAX 25
 #define BOXSIZE 3
-#define ROUNDS 1
+#define ROUNDS 500
 
 void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]);
 void initSpielfeld(char spielfeld [][YMAX]);
@@ -193,31 +193,33 @@ void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]
 	for(ofy = y-1, iy=0; ofy <= (signed int)y+1; ++ofy , ++iy){
 		for(ofx = x-1,ix = 0; ofx <= (signed int)x+1; ++ofx , ++ix){
 	
-			switch (ofy)
-			{
-			default:
-				break;
-			}
 
-			if( ofy < 0)	{
+
+			if( ofy < 0)	
+			{
 				osy = YMAX-1;
 			}
-			else if( ofy > YMAX-1)	{
+			else if( ofy > YMAX-1)	
+			{
 					osy = 0;
 			}
-			else {
+			else 
+			{
 					osy = ofy;
 			}
 			
 			
-			if( ofx < 0)	{
+			if( ofx < 0)	
+			{
 				osx = XMAX-1;
-			} else if( ofx > XMAX-1)	{
+			} else if( ofx > XMAX-1)	
+			{
 					osx = 0;
-				}
-				else {
+			}
+			else 
+			{
 					osx = ofx;
-				}
+			}
 		  temp = spielfeld[osx][osy];
 			nachbarn[ix][iy] = temp;				
 		}//for ofx
