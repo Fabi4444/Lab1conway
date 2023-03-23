@@ -103,7 +103,7 @@ int main(void)
 				lebende = zaehlLebende(nachbarn);
 				//gotoxy(x,y);
 				//cprintf("%d",lebende /7 );
-				pruefeRegeln(x,y,lebende / 7, temp, spielfeld);
+				pruefeRegeln(x,y,lebende, temp, spielfeld);
 			}// for x
 		}// for y
 
@@ -201,24 +201,14 @@ void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[
 
 int zaehlLebende(char nachbarn[][BOXSIZE]){
   int lebende = 0;
-  int iy, ix, flag;
-	for(iy= 0; iy < BOXSIZE ; iy++){
-		for(ix = 0; ix < BOXSIZE; ix++){
-			//prüfe dass wir nicht auf unserer eigneen position sind
-			
-		  flag = 21;
-			
-			if(ix != 1){
-			flag += 7;
-			}
-			if(iy != 7){
-			flag +=2;
-			}
-			if(flag > 21){
-				lebende += nachbarn[ix][iy] * 7;
-			}
-		}//for ix
-	}//for iy	
+  lebende += nachbarn[0][0];
+  lebende += nachbarn[0][1];
+  lebende += nachbarn[0][2];
+  lebende += nachbarn[1][0];
+  lebende += nachbarn[1][2];
+  lebende += nachbarn[2][0];
+  lebende += nachbarn[2][1];
+  lebende += nachbarn[2][2];
 	return lebende;
 }
 

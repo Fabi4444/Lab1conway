@@ -56,6 +56,7 @@ Debugger ausgaben auskommentieren   | 41,1s   | 0,0
 Prüferegeln neu geschrieben | 39,0 s | 0,0
 gotoxy entfernt | 38,5s | 0,0
 Fehler ausgebessert | 39,1s | 0,0
+Arrays von int auf char | 37,6s | 0,0
 
 
 ### Debugger ausgaben auskommentieren
@@ -72,3 +73,5 @@ Nach analysieren des codes haben wir bemerkt, dass der ausdruck ``gotoxy(0, 0)``
 ### Fehler ausgebessert
 Wir haben einen Fehler im Programm ausgebessert, der einer anderen Gruppe aufgefallen ist. Dadurch wurde das Programm allerdings wider langsamer.
 
+### Arrays von int auf char
+Da char nur 1 byte zur speicherung bzw. berechnung benötigt ist es schneller char arrays anstelle von integers zu verwenden.
