@@ -47,7 +47,6 @@ Ein sehr einfaches Beispiel ist der Block. Das sind einfach 4 ananeinander liege
 
 Es gibt auch sehr viele bewegte Objekte, wie zum Beispiel oszillierende Objekte, die sich immer wieder wiederholen, oder Gleiter und Segler die sich weiterbewegen.
 
-
 ## Verbesserungen
 
 Änderung | Zeit		| FPS
@@ -56,11 +55,20 @@ Nichts   | 55,3s	| 0,0
 Debugger ausgaben auskommentieren   | 41,1s   | 0,0
 Prüferegeln neu geschrieben | 39,0 s | 0,0
 gotoxy entfernt | 38,5s | 0,0
-
+Fehler ausgebessert | 39,1s | 0,0
 
 
 ### Debugger ausgaben auskommentieren
 Bei dem Ürsprünglichen Version des Programms werden die Anzahl der lebenden Nachbarn ausgegeben.
 Um die Zeit für diese Ausgabe zu sparen haben wir sie vorerst nur auskommentiert.
 Damit kann man diese Ausga später wieder Verwenden falls das Programm von uns "kapputt verbessert" wird, und wir es wieder debuggen müssen.
+
+### Prüferegeln neu geschrieben
+Die prüferegeln-Funktion war sehr inneffizient geschrieben welshab wir die ganze Funktion neu geschrieben haben.
+
+### gotoxy entfernt
+Nach analysieren des codes haben wir bemerkt, dass der ausdruck ``gotoxy(0, 0)`` unnötig ist, da diese funktion später wieder aufgerufen, und die Position somit überschrieben wird. 
+
+### Fehler ausgebessert
+Wir haben einen Fehler im Programm ausgebessert, der einer anderen Gruppe aufgefallen ist. Dadurch wurde das Programm allerdings wider langsamer.
 
