@@ -144,39 +144,7 @@ int main(void)
 
 void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[][YMAX]){
 	//hier kommen meine regeln
-	/*
-	if(spielfeld[x][y] == 0 ){
-		if(lebende == 3){
-			temp[x][y] = 1;
-//			printf("t3\n\n");
-		}
-	}
-	if(spielfeld[x][y] == 1){
-		if(lebende == 2){
-			temp[x][y] = 1;
-//			printf("=2\n\n");
-		}
-	}
-	if(spielfeld[x][y] == 1){
-		if(lebende == 3){
-			temp[x][y] = 1;
-//			printf("=3\n\n");
-		}
-	}
-	if(spielfeld[x][y] == 1){
-		if(lebende < 2){
-			temp[x][y] = 0;
-//			printf("<2\n\n");
-		}
-	}
-	if(spielfeld[x][y] == 1){
-		if(lebende > 3){					
-			temp[x][y] = 0;
-//			printf(">3\n\n");
-		}
-		
-	}
-	*/
+
 
 	if (spielfeld[x][y] == 0)
 	{
@@ -206,7 +174,21 @@ int zaehlLebende(char nachbarn[][BOXSIZE]){
 		for(ix = 0; ix < BOXSIZE; ix++){
 			//prüfe dass wir nicht auf unserer eigneen position sind
 			
-		  flag = 21;
+			flag = 21;
+			switch (ix)
+			{
+			default:flag += 7;
+				break;
+			}
+
+			switch (iy)
+			{
+			default:flag += 2;
+				break;
+			}
+			
+
+
 			
 			if(ix != 1){
 			flag += 7;
@@ -235,6 +217,12 @@ void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]
 	for(ofy = y-1, iy=0; ofy <= (signed int)y+1; ++ofy , ++iy){
 		for(ofx = x-1,ix = 0; ofx <= (signed int)x+1; ++ofx , ++ix){
 	
+			switch (ofy)
+			{
+			default:
+				break;
+			}
+
 			if( ofy < 0)	{
 				osy = YMAX-1;
 			}
