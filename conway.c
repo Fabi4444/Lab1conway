@@ -16,11 +16,11 @@
 #define BOXSIZE 3
 #define ROUNDS 1
 
-void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]);
-void initSpielfeld(int spielfeld [][YMAX]);
-void printSpielfeld(int spielfeld [][YMAX]);
-int zaehlLebende(int nachbarn[][BOXSIZE]);
-void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX], int spielfeld[][YMAX]);
+void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]);
+void initSpielfeld(char spielfeld [][YMAX]);
+void printSpielfeld(char spielfeld [][YMAX]);
+int zaehlLebende(char nachbarn[][BOXSIZE]);
+void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[][YMAX]);
 
 //static const char array[XMAX][YMAX] 
 const static int array[XMAX][YMAX]= {
