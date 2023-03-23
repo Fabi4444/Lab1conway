@@ -14,7 +14,7 @@
 #define XMAX 40
 #define YMAX 25
 #define BOXSIZE 3
-#define ROUNDS 100
+#define ROUNDS 1
 
 void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]);
 void initSpielfeld(int spielfeld [][YMAX]);
@@ -265,7 +265,7 @@ void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]){
 
 
 void printSpielfeld(int spielfeld [][YMAX]){
-	long int x,y;
+	char int x,y;
 	for(y = 0; y< YMAX; y++){
 		for(x = 0; x< XMAX; x++){
 			if(spielfeld[x][y] == 1){
@@ -281,7 +281,7 @@ void printSpielfeld(int spielfeld [][YMAX]){
 
 
 void initSpielfeld(int spielfeld [][YMAX]){
-	long int x,y;
+	char int x,y;
 	//fülle das feld mit zufallswerten und gibs aus
 	for(y = 0; y< YMAX; y++){
 		for(x = 0; x< XMAX; x++){
