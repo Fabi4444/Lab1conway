@@ -57,6 +57,8 @@ Debugger ausgaben auskommentieren   | 41,1s   | 0,0
 Prüferegeln neu geschrieben | 39,0 s | 0,0
 gotoxy entfernt | 38,5s | 0,0
 
+
+
 ### Debugger ausgaben auskommentieren
 Bei dem Ürsprünglichen Version des Programms werden die Anzahl der lebenden Nachbarn ausgegeben.
 Um die Zeit für diese Ausgabe zu sparen haben wir sie vorerst nur auskommentiert.
