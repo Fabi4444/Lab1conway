@@ -59,6 +59,8 @@ Fehler ausgebessert | 39,1s | 0,0
 Arrays von int auf char | 37,6s | 0,0
 zähle lebende verbessert | 28,8 | 0,0
 finde Nachbarn ohne Loop | 15,8 | 0,0
+nachbarn array nicht verwenden | 13,4s | 0,0
+char statt int | 12,9s | 0,0
 
 
 ### Debugger ausgaben auskommentieren
@@ -79,4 +81,10 @@ Wir haben einen Fehler im Programm ausgebessert, der einer anderen Gruppe aufgef
 Da char nur 1 byte zur speicherung bzw. berechnung benötigt ist es schneller char arrays anstelle von integers zu verwenden.
 
 ### Zähle lebende & finde nachbarn
-Die innefizenten for loop durch hard codet jede zelle einzeln
+Die innefizenten for-loops aus den zaehlLebende, und findNachbarn die durch die alle Zellen in dem nachbarn-array gehen, wurden durch eine hard-gecodete liste ersetzt.
+
+### Nachbarn array nicht verwenden 
+Damit das Nachbarn array nicht unnötig kopiert werden muss, werden die lebenden einfach bereits im finde nachbarn gezählt.
+
+### char statt int
+Die lebende, x und y variblen wurden auf chars geändert um geringere datenmenge zu übergeben.

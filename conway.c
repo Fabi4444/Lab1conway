@@ -14,9 +14,9 @@
 #define XMAX 40
 #define YMAX 25
 #define BOXSIZE 3
-#define ROUNDS 10
+#define ROUNDS 20
 
-void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]);
+char findNachbarn(char x, char y, char spielfeld[][YMAX]);
 void initSpielfeld(char spielfeld [][YMAX]);
 void printSpielfeld(char spielfeld [][YMAX]);
 int zaehlLebende(char nachbarn[][BOXSIZE]);
@@ -68,7 +68,7 @@ const static int array[XMAX][YMAX]= {
 
 static char spielfeld[XMAX][YMAX];
 static char temp[XMAX][YMAX];
-static char nachbarn[BOXSIZE][BOXSIZE];
+//static char nachbarn[BOXSIZE][BOXSIZE];
 
 int main(void)
 {
@@ -80,14 +80,14 @@ int main(void)
   unsigned char background;
   unsigned char text;
         
-	int x;
-	int y;
-	int lebende;
+	char x;
+	char y;
+	char lebende;
 	unsigned int round = 0;
 
-  t = clock ();
+	t = clock ();
 	initSpielfeld(spielfeld);
-  clrscr();
+	clrscr();
 	background = bgcolor(COLOR_BLACK);
 	text = textcolor(COLOR_WHITE);
 	printSpielfeld(spielfeld);
@@ -99,8 +99,8 @@ int main(void)
 			for(x = 0; x< XMAX; x++){
 				//gotoxy(0,0);
 				//cprintf("%2d %2d",x , y);
-				findNachbarn(x,y,spielfeld,nachbarn);
-				lebende = zaehlLebende(nachbarn);
+				lebende = findNachbarn(x,y,spielfeld);
+				//lebende = zaehlLebende(nachbarn);
 				//gotoxy(x,y);
 				//cprintf("%d",lebende /7 );
 				pruefeRegeln(x,y,lebende, temp, spielfeld);
@@ -166,7 +166,7 @@ void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[
 	}
 }
 
-
+/*
 int zaehlLebende(char nachbarn[][BOXSIZE]){
   int lebende = 0;
   lebende += nachbarn[0][0];
@@ -174,20 +174,22 @@ int zaehlLebende(char nachbarn[][BOXSIZE]){
   lebende += nachbarn[0][2];
   lebende += nachbarn[1][0];
   lebende += nachbarn[1][2];
+  lebende += nachbarn[2][2];
   lebende += nachbarn[2][0];
   lebende += nachbarn[2][1];
-  lebende += nachbarn[2][2];
 	return lebende;
-}
+}*/
 
 
 
-void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]){
+
+char findNachbarn(char x, char y, char spielfeld[][YMAX]){
 	//gehe über alle nachbarn
 	signed char x0 = x-1;
 	signed char x2 = x+1;
 	signed char y0 = y-1;
 	signed char y2 = y+1;
+	char lebende = 0;
 
 	if (x0 < 0) {
 		x0 = XMAX;
@@ -203,16 +205,17 @@ void findNachbarn(int x, int y, char spielfeld[][YMAX], char nachbarn[][BOXSIZE]
 	}
 
 
-
-	nachbarn[0][0] = spielfeld[x0][y0];
-	nachbarn[0][1] = spielfeld[x0][y];
-	nachbarn[0][2] = spielfeld[x0][y2];
-	nachbarn[1][0] = spielfeld[x][y0];
+	
+	lebende += spielfeld[x0][y0];
+	lebende += spielfeld[x0][y];
+	lebende += spielfeld[x0][y2];
+	lebende += spielfeld[x][y0];
 	//nachbarn[1][1] = spielfeld[x][y];
-	nachbarn[1][2] = spielfeld[x][y2];
-	nachbarn[2][0] = spielfeld[x2][y0];
-	nachbarn[2][1] = spielfeld[x2][y];
-	nachbarn[2][2] = spielfeld[x2][y2];
+	lebende += spielfeld[x][y2];
+	lebende += spielfeld[x2][y0];
+	lebende += spielfeld[x2][y];
+	lebende += spielfeld[x2][y2];
+	return lebende;
 
 }
 
