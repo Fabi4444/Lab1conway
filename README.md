@@ -62,7 +62,7 @@ finde Nachbarn ohne Loop | 15,8 | 0,0
 nachbarn array nicht verwenden | 13,4s | 0,0
 char statt int | 12,9s | 0,0
 
-![Graph](\bilder\Zeit_Aenderung_Conway_graph_1.png)
+![Graph](/bilder/Zeit_Aenderung_Conway_graph_1.png)
 
 ### Debugger ausgaben auskommentieren
 Bei dem Ürsprünglichen Version des Programms werden die Anzahl der lebenden Nachbarn ausgegeben.
