@@ -64,9 +64,9 @@ char statt int | 12,9s | 0,0
 
 ![Graph](/bilder/Zeit_Aenderung_Conway_graph_1.png)
 
-span style="color:red"
-Woche 1 : 
-/span
+
+# Woche 1 : 
+
 
 ### Debugger ausgaben auskommentieren
 Bei dem Ürsprünglichen Version des Programms werden die Anzahl der lebenden Nachbarn ausgegeben.
@@ -82,9 +82,9 @@ Nach analysieren des codes haben wir bemerkt, dass der ausdruck ``gotoxy(0, 0)``
 ### Fehler ausgebessert
 Wir haben einen Fehler im Programm ausgebessert, der einer anderen Gruppe aufgefallen ist. Dadurch wurde das Programm allerdings wider langsamer.
 
-span style="color:red"
-Woche 2 :
-/span
+
+# Woche 2 :
+
 
 ### Arrays von int auf char
 Da char nur 1 byte zur speicherung bzw. berechnung benötigt ist es schneller char arrays anstelle von integers zu verwenden.
