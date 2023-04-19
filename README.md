@@ -65,7 +65,7 @@ char statt int | 12,9s | 0,0
 ![Graph](/bilder/Zeit_Aenderung_Conway_graph_1.png)
 
 
-# Woche 1 : 
+# Laberzyklus 1 : 
 
 
 ### Debugger ausgaben auskommentieren
@@ -83,7 +83,7 @@ Nach analysieren des codes haben wir bemerkt, dass der ausdruck ``gotoxy(0, 0)``
 Wir haben einen Fehler im Programm ausgebessert, der einer anderen Gruppe aufgefallen ist. Dadurch wurde das Programm allerdings wider langsamer.
 
 
-# Woche 2 :
+# Laborzyklus 2 :
 
 
 ### Arrays von int auf char
