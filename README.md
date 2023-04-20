@@ -65,7 +65,7 @@ char statt int | 12,9s | 0,0
 ![Graph](/bilder/Zeit_Aenderung_Conway_graph_1.png)
 
 
-# Laberzyklus 1 : 
+# Laborzyklus 1 : 
 
 
 ### Debugger ausgaben auskommentieren
