@@ -14,13 +14,13 @@
 #define XMAX 40
 #define YMAX 25
 #define BOXSIZE 3
-#define ROUNDS 20
+#define ROUNDS 1
 
-char findNachbarn(char x, char y, char spielfeld[][YMAX]);
+//char findNachbarn(char x, char y, char spielfeld[][YMAX]);
 void initSpielfeld(char spielfeld [][YMAX]);
 void printSpielfeld(char spielfeld [][YMAX]);
-int zaehlLebende(char nachbarn[][BOXSIZE]);
-void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[][YMAX]);
+//int zaehlLebende(char nachbarn[][BOXSIZE]);
+//oid pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[][YMAX]);
 
 //static const char array[XMAX][YMAX] 
 const static int array[XMAX][YMAX]= {
@@ -85,12 +85,32 @@ int main(void)
 	//char lebende;
 	unsigned int round = 0;
 
+
 	t = clock ();
-	initSpielfeld(spielfeld);
+	
+
+	long int x_init, y_init;
+	//fülle das feld mit zufallswerten und gibs aus
+	for (y_init = 0; y_init < YMAX; y_init++) {
+		for (x_init = 0; x_init < XMAX; x_init++) {
+			spielfeld[x_init][y_init] = array[x_init][y_init];
+		}
+	}
 	clrscr();
 	background = bgcolor(COLOR_BLACK);
 	text = textcolor(COLOR_WHITE);
-	printSpielfeld(spielfeld);
+	long int x_spiel, y_spiel;
+	for (y_spiel = 0; y_spiel < YMAX; y_spiel++) {
+		for (x_spiel = 0; x_spiel < XMAX; x_spiel++) {
+			if (spielfeld[x_spiel][y_spiel] == 1) {
+				revers(1);
+			}
+			else {
+				revers(0);
+			}
+			cputcxy(x_spiel, y_spiel, 32);
+		}
+	}
 //	signal (int sig, __sigfunc func);
 
 
@@ -161,7 +181,18 @@ int main(void)
 		memcpy(spielfeld,temp,XMAX*YMAX);
 	
 		round++;
-		printSpielfeld(spielfeld);	
+		long int x_spiel2, y_spiel2;
+		for (y_spiel2 = 0; y_spiel2 < YMAX; y_spiel2++) {
+			for (x_spiel2 = 0; x_spiel2 < XMAX; x_spiel2++) {
+				if (spielfeld[x_spiel2][y_spiel2] == 1) {
+					revers(1);
+				}
+				else {
+					revers(0);
+				}
+				cputcxy(x_spiel2, y_spiel2, 32);
+			}
+		}
 	}
 		t = clock() - t;
 	
@@ -265,7 +296,7 @@ int main(void)
 
 
 
-void printSpielfeld(char spielfeld [][YMAX]){
+/*void printSpielfeld(char spielfeld[][YMAX]) {
 	long int x,y;
 	for(y = 0; y< YMAX; y++){
 		for(x = 0; x< XMAX; x++){
@@ -278,6 +309,7 @@ void printSpielfeld(char spielfeld [][YMAX]){
 		}
 	}
 }
+*/
 
 
 
