@@ -84,12 +84,13 @@ int main(void)
 	char y;
 	//char lebende;
 	unsigned int round = 0;
-
-
+	long int x_init, y_init;
+	long int x_spiel, y_spiel;
+	long int x_spiel2, y_spiel2;
 	t = clock ();
 	
 
-	long int x_init, y_init;
+	
 	//fülle das feld mit zufallswerten und gibs aus
 	for (y_init = 0; y_init < YMAX; y_init++) {
 		for (x_init = 0; x_init < XMAX; x_init++) {
@@ -99,7 +100,7 @@ int main(void)
 	clrscr();
 	background = bgcolor(COLOR_BLACK);
 	text = textcolor(COLOR_WHITE);
-	long int x_spiel, y_spiel;
+	
 	for (y_spiel = 0; y_spiel < YMAX; y_spiel++) {
 		for (x_spiel = 0; x_spiel < XMAX; x_spiel++) {
 			if (spielfeld[x_spiel][y_spiel] == 1) {
@@ -181,7 +182,7 @@ int main(void)
 		memcpy(spielfeld,temp,XMAX*YMAX);
 	
 		round++;
-		long int x_spiel2, y_spiel2;
+		
 		for (y_spiel2 = 0; y_spiel2 < YMAX; y_spiel2++) {
 			for (x_spiel2 = 0; x_spiel2 < XMAX; x_spiel2++) {
 				if (spielfeld[x_spiel2][y_spiel2] == 1) {
@@ -221,97 +222,6 @@ int main(void)
     /* Done */
     return EXIT_SUCCESS;
 }
-
-
-
-/*void pruefeRegeln(int x, int y, int lebende, char temp[][YMAX], char spielfeld[][YMAX]) {
-	//hier kommen meine regeln
-
-
-	switch (spielfeld[x][y])
-	{
-	case 0:
-		if (lebende == 3)
-		{
-			temp[x][y] = 1;
-		}
-		break;
-	case 1:
-		if (lebende == 2 || lebende == 3) {
-			temp[x][y] = 1;
-		}
-		if (lebende < 2 || lebende > 3) {
-			temp[x][y] = 0;
-		}
-		break;
-	default:
-		break;
-	}
-	
-}
-*/
-
-
-
-
-
-
-/*char findNachbarn(char x, char y, char spielfeld[][YMAX]) {
-	//gehe über alle nachbarn
-	signed char x0 = x-1;
-	signed char x2 = x+1;
-	signed char y0 = y-1;
-	signed char y2 = y+1;
-	char lebende = 0;
-	
-	if (x0 < 0) {
-		x0 = XMAX;
-	}
-	if (x2 > XMAX) {
-		x2 = 0;
-	}
-	if (y0 < 0) {
-		y0 = YMAX;
-	}
-	if (y2 > YMAX) {
-		y2 = 0;
-	}
-	
-	
-	
-	lebende += spielfeld[x0][y0];
-	lebende += spielfeld[x0][y];
-	lebende += spielfeld[x0][y2];
-	lebende += spielfeld[x][y0];
-	//nachbarn[1][1] = spielfeld[x][y];
-	lebende += spielfeld[x][y2];
-	lebende += spielfeld[x2][y0];
-	lebende += spielfeld[x2][y];
-	lebende += spielfeld[x2][y2];
-	return lebende;
-
-}
-*/
-
-
-
-
-/*void printSpielfeld(char spielfeld[][YMAX]) {
-	long int x,y;
-	for(y = 0; y< YMAX; y++){
-		for(x = 0; x< XMAX; x++){
-			if(spielfeld[x][y] == 1){
-				revers(1);
-			} else{
-				revers(0);
-			}		
- 			cputcxy (x, y, 32);
-		}
-	}
-}
-*/
-
-
 
 void initSpielfeld(char spielfeld [][YMAX]){
 	long int x,y;

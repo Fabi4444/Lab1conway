@@ -63,6 +63,7 @@ nachbarn array nicht verwenden | 13,4s | 0,0 | 15%
 char statt int | 12,9s | 0,0 | 4%
 switch case statt if | 12,0 | 0,0 | 7%
 funktionsaufrufe eliminieren | 10,2 | 0,0 | 15%
+mehr funktionen eliminieren | 9,9 | 0,1 | 3%
 
 
 ![Graph](/bilder/Aenderung_Conway_graph_3.png)
@@ -111,3 +112,4 @@ Wir haben die funktion ``pruefeRegeln`` mit verändernt.
 ### funktionsaufrufe eliminieren
 Jeder funktionsaufruf benötigt zeit, um die an die richige Stelle im Programm zu springen, und danach wieder zurück zu kommen.
 Das wird umgangen indem das Ganze Programm einfach untereinander "in einer Wurst" gepackt wurde.
+printSpeilfeld / init Spielfeld
