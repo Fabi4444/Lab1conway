@@ -64,13 +64,14 @@ char statt int | 12,9s | 0,0 | 4%
 switch case statt if | 12,0s | 0,0 | 7%
 funktionsaufrufe eliminieren | 10,2s | 0,0 | 15%
 mehr funktionen eliminieren | 9,9s | 0,1 | 3%
-++i statt i++| 9,9s |0,1 | 0%
+``++i`` statt ``i++`` | 9,9s |0,1 | 0%
+anderer compiler command | 7,7s | 0,1 | 22%
 
 ![Graph](/bilder/Aenderung_Conway_graph_3.png)
 Grafik 1: Zeit über die Änderung & verbesserung in %
 
 
-## Laborzyklus 1 : 
+## Laborzyklus 1: 
 
 
 ### Debugger ausgaben auskommentieren
@@ -88,7 +89,7 @@ Nach analysieren des codes haben wir bemerkt, dass der ausdruck ``gotoxy(0, 0)``
 Wir haben einen Fehler im Programm ausgebessert, der einer anderen Gruppe aufgefallen ist. Dadurch wurde das Programm allerdings wider langsamer.
 
 
-## Laborzyklus 2 :
+## Laborzyklus 2:
 
 
 ### Arrays von int auf char
@@ -103,6 +104,8 @@ Damit das Nachbarn array nicht unnötig kopiert werden muss, werden die lebenden
 ### char statt int
 Die lebende, x und y variblen wurden auf chars geändert um geringere datenmenge zu übergeben.
 
+## Laborzyklus 3:
+
 ### Switch-Case statt if in prueferegeln
 Switch case abfragen sind schneller durchführbar, als if abfragen.
 Allerdings können nur ``==`` abfragen machen, und keine ``<`` oder ``>`` abfragen.
@@ -112,4 +115,26 @@ Wir haben die funktion ``pruefeRegeln`` mit verändernt.
 ### funktionsaufrufe eliminieren
 Jeder funktionsaufruf benötigt zeit, um die an die richige Stelle im Programm zu springen, und danach wieder zurück zu kommen.
 Das wird umgangen indem das Ganze Programm einfach untereinander "in einer Wurst" gepackt wurde.
-printSpeilfeld / init Spielfeld
+
+### funktionsaufrufe printSpeilfeld / init Spielfeld eliminieren
+Als diese Funktionenn einfach so kopiert wurden, hat der Compiler den Fehler ``Mixed declarations and code are not supported`` gemolden.
+Grund dafür war, dass die deklarationen der Variablen alle an den Anfang gehören.
+
+### ``++i`` statt ``i++``
+In der [Dokumentation des c65 compilers](https://cc65.github.io/doc/coding.html), stand dass ``++i`` statt ``i++`` verwendet werden soll.
+Nach erneutem ausführen war keine Änderung ersichtlich.
+Als allerdings eine alte Version mit dem neuen Compiler command ausgeführt wurde, war eine Änderung erkennbar.
+
+### neuer compiler command 
+Durch die [Dokumentation des Compilers](https://cc65.github.io/doc/cl65.html) wurden Flags für die Codeoptimierung dazu geschrieben.
+Deshalb wurde die Flag ``-Oirs`` hinzugefügt.
+
+Neuer compile command: ``cl65 -Oirs -t c64 -o conway.prg conway.c``
+
+Das Flag ``Oirs`` ist eine Kombination aus 3 Optimierungs-Flags:
+* ``Oi`` - Optimize code, inline more code
+* ``Or`` - Optimize code, honour the register keyword
+* ``Os`` - Optimize code, inline standard funtions
+
+
+
