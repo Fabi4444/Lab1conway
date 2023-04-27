@@ -61,10 +61,12 @@ zähle lebende verbessert | 28,8s | 0,0 | 23%
 finde Nachbarn ohne Loop | 15,8s | 0,0 | 45%
 nachbarn array nicht verwenden | 13,4s | 0,0 | 15%
 char statt int | 12,9s | 0,0 | 4%
-switch case statt if| | 0,0 |
+switch case statt if | 12,0 | 0,0 | 7%
+funktionsaufrufe eliminieren | 10,2 | 0,0 | 15%
 
 
-![Graph](/bilder/Aenderung_Conway_graph_2.png)
+![Graph](/bilder/Aenderung_Conway_graph_3.png)
+Grafik 1: Zeit über die Änderung & verbesserung in %
 
 
 ## Laborzyklus 1 : 
@@ -100,3 +102,12 @@ Damit das Nachbarn array nicht unnötig kopiert werden muss, werden die lebenden
 ### char statt int
 Die lebende, x und y variblen wurden auf chars geändert um geringere datenmenge zu übergeben.
 
+### Switch-Case statt if in prueferegeln
+Switch case abfragen sind schneller durchführbar, als if abfragen.
+Allerdings können nur ``==`` abfragen machen, und keine ``<`` oder ``>`` abfragen.
+Dadurch können nicht alle if-abfragen mit Switch-Case ersetz werden.
+Wir haben die funktion ``pruefeRegeln`` mit verändernt.
+
+### funktionsaufrufe eliminieren
+Jeder funktionsaufruf benötigt zeit, um die an die richige Stelle im Programm zu springen, und danach wieder zurück zu kommen.
+Das wird umgangen indem das Ganze Programm einfach untereinander "in einer Wurst" gepackt wurde.
