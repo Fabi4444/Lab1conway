@@ -49,23 +49,25 @@ Es gibt auch sehr viele bewegte Objekte, wie zum Beispiel oszillierende Objekte,
 
 ## Verbesserungen
 
-Änderung | Zeit		| FPS
+Änderung | Zeit		| FPS	| Verbesserung in %
 -------- | -------- | ---------
-Nichts   | 55,3s	| 0,0
-Debugger ausgaben auskommentieren   | 41,1s   | 0,0
-Prüferegeln neu geschrieben | 39,0 s | 0,0
-gotoxy entfernt | 38,5s | 0,0
-Fehler ausgebessert | 39,1s | 0,0
-Arrays von int auf char | 37,6s | 0,0
-zähle lebende verbessert | 28,8s | 0,0
-finde Nachbarn ohne Loop | 15,8s | 0,0
-nachbarn array nicht verwenden | 13,4s | 0,0
-char statt int | 12,9s | 0,0
+Nichts   | 55,3s	| 0,0	|	-
+Debugger ausgaben auskommentieren   |	41,1s   | 0,0 | 26%
+Prüferegeln neu geschrieben | 39,0s | 0,0	|	5%
+gotoxy entfernt | 38,5s | 0,0	|	1%
+Fehler ausgebessert | 39,1s | 0,0	|	-2%
+Arrays von int auf char | 37,6s | 0,0 | 4%
+zähle lebende verbessert | 28,8s | 0,0 | 23%
+finde Nachbarn ohne Loop | 15,8s | 0,0 | 45%
+nachbarn array nicht verwenden | 13,4s | 0,0 | 15%
+char statt int | 12,9s | 0,0 | 4%
+switch case statt if| | 0,0 |
 
-![Graph](/bilder/Zeit_Aenderung_Conway_graph_1.png)
+
+![Graph](/bilder/Aenderung_Conway_graph_2.png)
 
 
-# Laborzyklus 1 : 
+## Laborzyklus 1 : 
 
 
 ### Debugger ausgaben auskommentieren
@@ -83,7 +85,7 @@ Nach analysieren des codes haben wir bemerkt, dass der ausdruck ``gotoxy(0, 0)``
 Wir haben einen Fehler im Programm ausgebessert, der einer anderen Gruppe aufgefallen ist. Dadurch wurde das Programm allerdings wider langsamer.
 
 
-# Laborzyklus 2 :
+## Laborzyklus 2 :
 
 
 ### Arrays von int auf char
