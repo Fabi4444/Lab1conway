@@ -14,7 +14,7 @@
 #define XMAX 40
 #define YMAX 25
 #define BOXSIZE 3
-#define ROUNDS 1
+#define ROUNDS 10
 
 //char findNachbarn(char x, char y, char spielfeld[][YMAX]);
 void initSpielfeld(char spielfeld [][YMAX]);
@@ -86,7 +86,6 @@ int main(void)
 	unsigned int round = 0;
 	long int x_init, y_init;
 	long int x_spiel, y_spiel;
-	long int x_spiel2, y_spiel2;
 	t = clock ();
 	
 
@@ -140,8 +139,6 @@ int main(void)
 					y2 = 0;
 				}
 
-
-
 				lebende += spielfeld[x0][y0];
 				lebende += spielfeld[x0][y];
 				lebende += spielfeld[x0][y2];
@@ -151,11 +148,9 @@ int main(void)
 				lebende += spielfeld[x2][y0];
 				lebende += spielfeld[x2][y];
 				lebende += spielfeld[x2][y2];
-				
 
 				//cprintf("%d",lebende /7 );
 				//hier kommen meine regeln
-
 
 				switch (spielfeld[x][y])
 				{
@@ -175,6 +170,13 @@ int main(void)
 					break;
 				default:
 					break;
+
+				if (spielfeld[x][y] == 1) {
+					revers(1);
+				}
+				else {
+					revers(0);
+				}
 				}
 			}// for x
 		}// for y
@@ -183,17 +185,6 @@ int main(void)
 	
 		round++;
 		
-		for (y_spiel2 = 0; y_spiel2 < YMAX; ++y_spiel2) {
-			for (x_spiel2 = 0; x_spiel2 < XMAX; ++x_spiel2) {
-				if (spielfeld[x_spiel2][y_spiel2] == 1) {
-					revers(1);
-				}
-				else {
-					revers(0);
-				}
-				cputcxy(x_spiel2, y_spiel2, 32);
-			}
-		}
 	}
 		t = clock() - t;
 	

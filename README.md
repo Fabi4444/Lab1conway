@@ -1,4 +1,4 @@
-# Lab1conway
+# Lab1conway Effiziente Programme
 
 ## Aufgabenstellung
 Die Aufgabe ist ein Programm welches [Conways Spiel des Lebens](https://de.wikipedia.org/wiki/Conways_Spiel_des_Lebens) implementiert zu optimieren.
@@ -66,6 +66,7 @@ funktionsaufrufe eliminieren | 10,2s | 0,0 | 15%
 mehr funktionen eliminieren | 9,9s | 0,1 | 3%
 ``++i`` statt ``i++`` | 9,9s |0,1 | 0%
 anderer compiler command | 7,7s | 0,1 | 22%
+print for Loop | 6,4s | 0,1| 
 
 ![Graph](/bilder/Aenderung_Conway_graph_3.png)
 Grafik 1: Zeit über die Änderung & verbesserung in %
@@ -132,9 +133,13 @@ Deshalb wurde die Flag ``-Oirs`` hinzugefügt.
 Neuer compile command: ``cl65 -Oirs -t c64 -o conway.prg conway.c``
 
 Das Flag ``Oirs`` ist eine Kombination aus 3 Optimierungs-Flags:
-* ``Oi`` - Optimize code, inline more code
-* ``Or`` - Optimize code, honour the register keyword
-* ``Os`` - Optimize code, inline standard funtions
+1. ``Oi`` - Optimize code, inline more code
+1. ``Or`` - Optimize code, honour the register keyword
+1. ``Os`` - Optimize code, inline standard funtions
+
+### print for loop weggelassen
+Die Print funktionen waren in einem eingenen for loop.
+Durch das Kopieren der If - Abfrage in den anderen for Loop, wird der andere nichtmehr benötigt.
 
 
 
