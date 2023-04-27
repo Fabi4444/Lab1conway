@@ -145,7 +145,7 @@ int main(void)
 void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[][YMAX]){
 	//hier kommen meine regeln
 
-
+	/*
 	if (spielfeld[x][y] == 0)
 	{
 		if (lebende == 3) {
@@ -164,21 +164,30 @@ void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[
 			//			printf("<2\n\n");
 		}
 	}
+	*/
+	switch (spielfeld[x][y])
+	{
+	case 0:
+		if (lebende == 3)
+		{
+			temp[x][y] = 1;
+		}
+		break;
+	case 1:
+		if (lebende == 2 || lebende == 3) {
+			temp[x][y] = 1;
+		}
+		if (lebende < 2 || lebende > 3) {
+			temp[x][y] = 0;
+		}
+		break;
+	default:
+		break;
+	}
+	
 }
 
-/*
-int zaehlLebende(char nachbarn[][BOXSIZE]){
-  int lebende = 0;
-  lebende += nachbarn[0][0];
-  lebende += nachbarn[0][1];
-  lebende += nachbarn[0][2];
-  lebende += nachbarn[1][0];
-  lebende += nachbarn[1][2];
-  lebende += nachbarn[2][2];
-  lebende += nachbarn[2][0];
-  lebende += nachbarn[2][1];
-	return lebende;
-}*/
+
 
 
 
@@ -190,7 +199,7 @@ char findNachbarn(char x, char y, char spielfeld[][YMAX]){
 	signed char y0 = y-1;
 	signed char y2 = y+1;
 	char lebende = 0;
-
+	
 	if (x0 < 0) {
 		x0 = XMAX;
 	}
@@ -203,8 +212,8 @@ char findNachbarn(char x, char y, char spielfeld[][YMAX]){
 	if (y2 > YMAX) {
 		y2 = 0;
 	}
-
-
+	
+	
 	
 	lebende += spielfeld[x0][y0];
 	lebende += spielfeld[x0][y];
