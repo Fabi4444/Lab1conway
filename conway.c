@@ -190,7 +190,7 @@ char findNachbarn(char x, char y, char spielfeld[][YMAX]){
 	signed char y0 = y-1;
 	signed char y2 = y+1;
 	char lebende = 0;
-
+	/*
 	if (x0 < 0) {
 		x0 = XMAX;
 	}
@@ -203,8 +203,24 @@ char findNachbarn(char x, char y, char spielfeld[][YMAX]){
 	if (y2 > YMAX) {
 		y2 = 0;
 	}
-
-
+	*/
+	switch (x0,x2,y0,y2)
+	{
+	case (x0<0):
+		x0 = XMAX;
+		break;
+	case (x2 > XMAX):
+		x2 = 0;
+		break;
+	case (y0 < 0):
+		y0 = YMAX;
+		break;
+	case (y2 > YMAX):
+		y2 = 0;
+		break;
+	default:
+		break;
+	}
 	
 	lebende += spielfeld[x0][y0];
 	lebende += spielfeld[x0][y];
