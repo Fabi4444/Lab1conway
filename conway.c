@@ -14,11 +14,11 @@
 #define XMAX 40
 #define YMAX 25
 #define BOXSIZE 3
-#define ROUNDS 10
+#define ROUNDS 100
 
 //char findNachbarn(char x, char y, char spielfeld[][YMAX]);
-void initSpielfeld(char spielfeld [][YMAX]);
-void printSpielfeld(char spielfeld [][YMAX]);
+//void initSpielfeld(char spielfeld [][YMAX]);
+//void printSpielfeld(char spielfeld [][YMAX]);
 //int zaehlLebende(char nachbarn[][BOXSIZE]);
 //oid pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[][YMAX]);
 
@@ -86,10 +86,11 @@ int main(void)
 	unsigned int round = 0;
 	long int x_init, y_init;
 	long int x_spiel, y_spiel;
+
 	t = clock ();
 	
 
-	
+	// init
 	//fülle das feld mit zufallswerten und gibs aus
 	for (y_init = 0; y_init < YMAX; ++y_init) {
 		for (x_init = 0; x_init < XMAX; ++x_init) {
@@ -100,6 +101,7 @@ int main(void)
 	background = bgcolor(COLOR_BLACK);
 	text = textcolor(COLOR_WHITE);
 	
+	// print
 	for (y_spiel = 0; y_spiel < YMAX; ++y_spiel) {
 		for (x_spiel = 0; x_spiel < XMAX; ++x_spiel) {
 			if (spielfeld[x_spiel][y_spiel] == 1) {
@@ -155,11 +157,14 @@ int main(void)
 				switch (spielfeld[x][y])
 				{
 				case 0:
+
+					
 					if (lebende == 3)
 					{
 						temp[x][y] = 1;
 					}
 					break;
+					
 				case 1:
 					if (lebende == 2 || lebende == 3) {
 						temp[x][y] = 1;
@@ -170,6 +175,9 @@ int main(void)
 					break;
 				default:
 					break;
+				}
+
+
 
 				if (spielfeld[x][y] == 1) {
 					revers(1);
@@ -177,14 +185,13 @@ int main(void)
 				else {
 					revers(0);
 				}
-				}
+				cputcxy(x, y, 32);
 			}// for x
 		}// for y
 
 		memcpy(spielfeld,temp,XMAX*YMAX);
 	
 		round++;
-		
 	}
 		t = clock() - t;
 	
@@ -214,12 +221,4 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-void initSpielfeld(char spielfeld [][YMAX]){
-	long int x,y;
-	//fülle das feld mit zufallswerten und gibs aus
-	for(y = 0; y< YMAX; ++y){
-		for(x = 0; x< XMAX; ++x){
-				spielfeld[x][y] = array[x][y];
-		}
-	}
-}
+
