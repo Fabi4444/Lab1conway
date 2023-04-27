@@ -82,7 +82,7 @@ int main(void)
         
 	char x;
 	char y;
-	char lebende;
+	//char lebende;
 	unsigned int round = 0;
 
 	t = clock ();
@@ -96,14 +96,65 @@ int main(void)
 
 	while(round < ROUNDS && !kbhit()){
 		for(y = 0; y< YMAX; y++){
-			for(x = 0; x< XMAX; x++){
-				//gotoxy(0,0);
+			for(x = 0; x< XMAX; x++)
+			{
 				//cprintf("%2d %2d",x , y);
-				lebende = findNachbarn(x,y,spielfeld);
-				//lebende = zaehlLebende(nachbarn);
-				//gotoxy(x,y);
+				//gehe über alle nachbarn
+				signed char x0 = x - 1;
+				signed char x2 = x + 1;
+				signed char y0 = y - 1;
+				signed char y2 = y + 1;
+				char lebende = 0;
+
+				if (x0 < 0) {
+					x0 = XMAX;
+				}
+				if (x2 > XMAX) {
+					x2 = 0;
+				}
+				if (y0 < 0) {
+					y0 = YMAX;
+				}
+				if (y2 > YMAX) {
+					y2 = 0;
+				}
+
+
+
+				lebende += spielfeld[x0][y0];
+				lebende += spielfeld[x0][y];
+				lebende += spielfeld[x0][y2];
+				lebende += spielfeld[x][y0];
+				//nachbarn[1][1] = spielfeld[x][y];
+				lebende += spielfeld[x][y2];
+				lebende += spielfeld[x2][y0];
+				lebende += spielfeld[x2][y];
+				lebende += spielfeld[x2][y2];
+				
+
 				//cprintf("%d",lebende /7 );
-				pruefeRegeln(x,y,lebende, temp, spielfeld);
+				//hier kommen meine regeln
+
+
+				switch (spielfeld[x][y])
+				{
+				case 0:
+					if (lebende == 3)
+					{
+						temp[x][y] = 1;
+					}
+					break;
+				case 1:
+					if (lebende == 2 || lebende == 3) {
+						temp[x][y] = 1;
+					}
+					if (lebende < 2 || lebende > 3) {
+						temp[x][y] = 0;
+					}
+					break;
+				default:
+					break;
+				}
 			}// for x
 		}// for y
 
@@ -142,29 +193,10 @@ int main(void)
 
 
 
-void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[][YMAX]){
+/*void pruefeRegeln(int x, int y, int lebende, char temp[][YMAX], char spielfeld[][YMAX]) {
 	//hier kommen meine regeln
 
-	/*
-	if (spielfeld[x][y] == 0)
-	{
-		if (lebende == 3) {
-			temp[x][y] = 1;
-			//			printf("t3\n\n");
-		}
-	}
 
-	if (spielfeld[x][y] == 1) {
-		if (lebende == 2 || lebende == 3) {
-			temp[x][y] = 1;
-			//			printf("=2\n\n");
-		}
-		if (lebende < 2 || lebende > 3) {
-			temp[x][y] = 0;
-			//			printf("<2\n\n");
-		}
-	}
-	*/
 	switch (spielfeld[x][y])
 	{
 	case 0:
@@ -186,13 +218,14 @@ void pruefeRegeln(int x, int y,  int lebende, char temp[][YMAX], char spielfeld[
 	}
 	
 }
+*/
 
 
 
 
 
 
-char findNachbarn(char x, char y, char spielfeld[][YMAX]){
+/*char findNachbarn(char x, char y, char spielfeld[][YMAX]) {
 	//gehe über alle nachbarn
 	signed char x0 = x-1;
 	signed char x2 = x+1;
@@ -227,6 +260,7 @@ char findNachbarn(char x, char y, char spielfeld[][YMAX]){
 	return lebende;
 
 }
+*/
 
 
 
