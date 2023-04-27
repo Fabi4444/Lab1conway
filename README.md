@@ -66,7 +66,7 @@ funktionsaufrufe eliminieren | 10,2s | 0,0 | 15%
 mehr funktionen eliminieren | 9,9s | 0,1 | 3%
 ``++i`` statt ``i++`` | 9,9s |0,1 | 0%
 anderer compiler command | 7,7s | 0,1 | 22%
-print for Loop | 6,4s | 0,1| 
+print for Loop | 7,2s | 0,1| 
 
 ![Graph](/bilder/Aenderung_Conway_graph_3.png)
 Grafik 1: Zeit über die Änderung & verbesserung in %
@@ -140,6 +140,4 @@ Das Flag ``Oirs`` ist eine Kombination aus 3 Optimierungs-Flags:
 ### print for loop weggelassen
 Die Print funktionen waren in einem eingenen for loop.
 Durch das Kopieren der If - Abfrage in den anderen for Loop, wird der andere nichtmehr benötigt.
-
-
 

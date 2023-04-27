@@ -14,7 +14,7 @@
 #define XMAX 40
 #define YMAX 25
 #define BOXSIZE 3
-#define ROUNDS 10
+#define ROUNDS 100
 
 //char findNachbarn(char x, char y, char spielfeld[][YMAX]);
 void initSpielfeld(char spielfeld [][YMAX]);
@@ -86,6 +86,7 @@ int main(void)
 	unsigned int round = 0;
 	long int x_init, y_init;
 	long int x_spiel, y_spiel;
+
 	t = clock ();
 	
 
@@ -170,6 +171,7 @@ int main(void)
 					break;
 				default:
 					break;
+				}
 
 				if (spielfeld[x][y] == 1) {
 					revers(1);
@@ -177,14 +179,13 @@ int main(void)
 				else {
 					revers(0);
 				}
-				}
+				cputcxy(x, y, 32);
 			}// for x
 		}// for y
 
 		memcpy(spielfeld,temp,XMAX*YMAX);
 	
 		round++;
-		
 	}
 		t = clock() - t;
 	
