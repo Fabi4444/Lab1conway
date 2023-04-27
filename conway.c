@@ -92,8 +92,8 @@ int main(void)
 
 	
 	//fülle das feld mit zufallswerten und gibs aus
-	for (y_init = 0; y_init < YMAX; y_init++) {
-		for (x_init = 0; x_init < XMAX; x_init++) {
+	for (y_init = 0; y_init < YMAX; ++y_init) {
+		for (x_init = 0; x_init < XMAX; ++x_init) {
 			spielfeld[x_init][y_init] = array[x_init][y_init];
 		}
 	}
@@ -101,8 +101,8 @@ int main(void)
 	background = bgcolor(COLOR_BLACK);
 	text = textcolor(COLOR_WHITE);
 	
-	for (y_spiel = 0; y_spiel < YMAX; y_spiel++) {
-		for (x_spiel = 0; x_spiel < XMAX; x_spiel++) {
+	for (y_spiel = 0; y_spiel < YMAX; ++y_spiel) {
+		for (x_spiel = 0; x_spiel < XMAX; ++x_spiel) {
 			if (spielfeld[x_spiel][y_spiel] == 1) {
 				revers(1);
 			}
@@ -116,8 +116,8 @@ int main(void)
 
 
 	while(round < ROUNDS && !kbhit()){
-		for(y = 0; y< YMAX; y++){
-			for(x = 0; x< XMAX; x++)
+		for(y = 0; y< YMAX; ++y){
+			for(x = 0; x< XMAX; ++x)
 			{
 				//cprintf("%2d %2d",x , y);
 				//gehe über alle nachbarn
@@ -183,8 +183,8 @@ int main(void)
 	
 		round++;
 		
-		for (y_spiel2 = 0; y_spiel2 < YMAX; y_spiel2++) {
-			for (x_spiel2 = 0; x_spiel2 < XMAX; x_spiel2++) {
+		for (y_spiel2 = 0; y_spiel2 < YMAX; ++y_spiel2) {
+			for (x_spiel2 = 0; x_spiel2 < XMAX; ++x_spiel2) {
 				if (spielfeld[x_spiel2][y_spiel2] == 1) {
 					revers(1);
 				}
@@ -226,8 +226,8 @@ int main(void)
 void initSpielfeld(char spielfeld [][YMAX]){
 	long int x,y;
 	//fülle das feld mit zufallswerten und gibs aus
-	for(y = 0; y< YMAX; y++){
-		for(x = 0; x< XMAX; x++){
+	for(y = 0; y< YMAX; ++y){
+		for(x = 0; x< XMAX; ++x){
 				spielfeld[x][y] = array[x][y];
 		}
 	}
