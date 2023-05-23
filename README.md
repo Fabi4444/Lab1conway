@@ -50,7 +50,7 @@ Es gibt auch sehr viele bewegte Objekte, wie zum Beispiel oszillierende Objekte,
 ## Verbesserungen
 
 Änderung | Zeit		| FPS	| Verbesserung in %
--------- | -------- | ---------
+-------- | -------- | ------| ----------
 Nichts   | 55,3s	| 0,0	|	-
 Debugger ausgaben auskommentieren   |	41,1s   | 0,0 | 26%
 Prüferegeln neu geschrieben | 39,0s | 0,0	|	5%
@@ -66,8 +66,8 @@ funktionsaufrufe eliminieren | 10,2s | 0,0 | 15%
 mehr funktionen eliminieren | 9,9s | 0,1 | 3%
 ``++i`` statt ``i++`` | 9,9s | 0,1 | 0%
 anderer compiler command | 7,7s | 0,1 | 22%
-print for Loop | 7,2s | 0,1 | 
-char statt long | 6,1s | 0,1 |
+print for Loop | 7,2s | 0,1 | -
+char statt long | 6,1s | 0,1 | - 
 
 ![Graph](/bilder/Aenderung_Conway_graph_3.png)
 Grafik 1: Zeit über die Änderung & verbesserung in %
