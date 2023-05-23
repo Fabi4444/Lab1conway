@@ -84,8 +84,8 @@ int main(void)
 	char y;
 	//char lebende;
 	unsigned int round = 0;
-	long int x_init, y_init;
-	long int x_spiel, y_spiel;
+	char x_init, y_init;
+	char x_spiel, y_spiel;
 
 	t = clock ();
 	

@@ -64,9 +64,10 @@ char statt int | 12,9s | 0,0 | 4%
 switch case statt if | 12,0s | 0,0 | 7%
 funktionsaufrufe eliminieren | 10,2s | 0,0 | 15%
 mehr funktionen eliminieren | 9,9s | 0,1 | 3%
-``++i`` statt ``i++`` | 9,9s |0,1 | 0%
+``++i`` statt ``i++`` | 9,9s | 0,1 | 0%
 anderer compiler command | 7,7s | 0,1 | 22%
 print for Loop | 7,2s | 0,1 | 
+char statt long | 6,1s | 0,1 |
 
 ![Graph](/bilder/Aenderung_Conway_graph_3.png)
 Grafik 1: Zeit über die Änderung & verbesserung in %
