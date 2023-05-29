@@ -114,11 +114,11 @@ Allerdings können nur ``==`` abfragen machen, und keine ``<`` oder ``>`` abfrag
 Dadurch können nicht alle if-abfragen mit Switch-Case ersetz werden.
 Wir haben die funktion ``pruefeRegeln`` mit verändernt.
 
-### funktionsaufrufe eliminieren
+### Funktionsaufrufe eliminieren
 Jeder funktionsaufruf benötigt zeit, um die an die richige Stelle im Programm zu springen, und danach wieder zurück zu kommen.
 Das wird umgangen indem das Ganze Programm einfach untereinander "in einer Wurst" gepackt wurde.
 
-### funktionsaufrufe printSpeilfeld / init Spielfeld eliminieren
+### Funktionsaufrufe printSpielfeld / initSpielfeld eliminieren
 Als diese Funktionenn einfach so kopiert wurden, hat der Compiler den Fehler ``Mixed declarations and code are not supported`` gemolden.
 Grund dafür war, dass die deklarationen der Variablen alle an den Anfang gehören.
 
@@ -127,7 +127,7 @@ In der [Dokumentation des c65 compilers](https://cc65.github.io/doc/coding.html)
 Nach erneutem ausführen war keine Änderung ersichtlich.
 Als allerdings eine alte Version mit dem neuen Compiler command ausgeführt wurde, war eine Änderung erkennbar.
 
-### neuer compiler command 
+### Neuer compiler command 
 Durch die [Dokumentation des Compilers](https://cc65.github.io/doc/cl65.html) wurden Flags für die Codeoptimierung dazu geschrieben.
 Deshalb wurde die Flag ``-Oirs`` hinzugefügt.
 
@@ -138,7 +138,10 @@ Das Flag ``Oirs`` ist eine Kombination aus 3 Optimierungs-Flags:
 1. ``Or`` - Optimize code, honour the register keyword
 1. ``Os`` - Optimize code, inline standard funtions
 
-### print for loop weggelassen
+### Print for loop weggelassen
 Die Print funktionen waren in einem eingenen for loop.
 Durch das Kopieren der If - Abfrage in den anderen for Loop, wird der andere nichtmehr benötigt.
+
+### Char statt long
+
 
