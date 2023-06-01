@@ -69,7 +69,7 @@ anderer compiler command | 7,7s | 0,1 | 22%
 print for Loop | 7,2s | 0,1 | 6%
 char statt long | 6,1s | 0,1 | 15% 
 
-![Graph](/bilder/Aenderung_Conway_graph_4.png)
+![Graph](/bilder/Aenderung_Conway_graph_5.png)
 Grafik 1: Zeit über die Änderung & verbesserung in %
 
 

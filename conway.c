@@ -129,18 +129,17 @@ int main(void)
 				char lebende = 0;
 
 				if (x0 < 0) {
-					x0 = XMAX;
+					x0 = XMAX - 1;
 				}
-				if (x2 > XMAX) {
+				if (x2 > XMAX - 1) {
 					x2 = 0;
 				}
 				if (y0 < 0) {
-					y0 = YMAX;
+					y0 = YMAX - 1;
 				}
-				if (y2 > YMAX) {
+				if (y2 > YMAX - 1) {
 					y2 = 0;
 				}
-
 				lebende += spielfeld[x0][y0];
 				lebende += spielfeld[x0][y];
 				lebende += spielfeld[x0][y2];
@@ -154,26 +153,17 @@ int main(void)
 				//cprintf("%d",lebende /7 );
 				//hier kommen meine regeln
 
-				switch (spielfeld[x][y])
+				switch (lebende)
 				{
-				case 0:
-
-					
-					if (lebende == 3)
-					{
-						temp[x][y] = 1;
-					}
+				case 2:
+					temp[x][y] = spielfeld[x][y];
 					break;
 					
-				case 1:
-					if (lebende == 2 || lebende == 3) {
-						temp[x][y] = 1;
-					}
-					if (lebende < 2 || lebende > 3) {
-						temp[x][y] = 0;
-					}
+				case 3:
+					temp[x][y] = 1;
 					break;
 				default:
+					temp[x][y] = 0;
 					break;
 				}
 
@@ -182,7 +172,8 @@ int main(void)
 				if (spielfeld[x][y] == 1) {
 					revers(1);
 				}
-				else {
+				else
+				{
 					revers(0);
 				}
 				cputcxy(x, y, 32);
@@ -220,5 +211,4 @@ int main(void)
     /* Done */
     return EXIT_SUCCESS;
 }
-
 
