@@ -14,7 +14,7 @@
 #define XMAX 40
 #define YMAX 25
 #define BOXSIZE 3
-#define ROUNDS 100
+#define ROUNDS 1
 
 //char findNachbarn(char x, char y, char spielfeld[][YMAX]);
 //void initSpielfeld(char spielfeld [][YMAX]);
@@ -84,7 +84,7 @@ int main(void)
 	char y;
 	//char lebende;
 	unsigned int round = 0;
-	char x_init, y_init;
+	//char x_init, y_init;
 	char x_spiel, y_spiel;
 
 	t = clock ();
@@ -92,27 +92,35 @@ int main(void)
 
 	// init
 	//fülle das feld mit zufallswerten und gibs aus
+	/*
 	for (y_init = 0; y_init < YMAX; ++y_init) {
 		for (x_init = 0; x_init < XMAX; ++x_init) {
 			spielfeld[x_init][y_init] = array[x_init][y_init];
 		}
 	}
+	*/
 	clrscr();
 	background = bgcolor(COLOR_BLACK);
 	text = textcolor(COLOR_WHITE);
 	
 	// print
+	
 	for (y_spiel = 0; y_spiel < YMAX; ++y_spiel) {
 		for (x_spiel = 0; x_spiel < XMAX; ++x_spiel) {
-			if (spielfeld[x_spiel][y_spiel] == 1) {
+			spielfeld[x_spiel][y_spiel] = array[x_spiel][y_spiel];
+			switch (spielfeld[x_spiel][y_spiel])
+			{
+			case 1:
 				revers(1);
-			}
-			else {
+				break;
+			default:
 				revers(0);
+				break;
 			}
 			cputcxy(x_spiel, y_spiel, 32);
 		}
 	}
+	
 //	signal (int sig, __sigfunc func);
 
 
@@ -167,14 +175,14 @@ int main(void)
 					break;
 				}
 
-
-
-				if (spielfeld[x][y] == 1) {
-					revers(1);
-				}
-				else
+				switch (spielfeld[x][y])
 				{
+				case 1:
+					revers(1);
+					break;
+				default:
 					revers(0);
+					break;
 				}
 				cputcxy(x, y, 32);
 			}// for x
@@ -211,4 +219,3 @@ int main(void)
     /* Done */
     return EXIT_SUCCESS;
 }
-
