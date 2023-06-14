@@ -52,7 +52,7 @@ Es gibt auch sehr viele bewegte Objekte, wie zum Beispiel oszillierende Objekte,
 Änderung | Zeit		| FPS	| Verbesserung in %
 -------- | -------- | ------| ----------
 Nichts   | 55,3s	| 0,0	|	-
-Debugger ausgaben auskommentieren   |	41,1s   | 0,0 | 26%
+Debugger Ausgaben auskommentieren   |	41,1s   | 0,0 | 26%
 Prüferegeln neu geschrieben | 39,0s | 0,0	|	5%
 gotoxy entfernt | 38,5s | 0,0	|	1%
 Fehler ausgebessert | 39,1s | 0,0	|	-2%
@@ -68,6 +68,7 @@ mehr funktionen eliminieren | 9,9s | 0,1 | 3%
 anderer compiler command | 7,7s | 0,1 | 22%
 print for Loop | 7,2s | 0,1 | 6%
 char statt long | 6,1s | 0,1 | 15% 
+nur lebende Zellen ausgeben | 5,7 | 0,1 | x
 
 ![Graph](/bilder/Aenderung_Conway_graph_5.png)
 Grafik 1: Zeit über die Änderung & verbesserung in %
@@ -143,5 +144,29 @@ Die Print funktionen waren in einem eingenen for loop.
 Durch das Kopieren der If - Abfrage in den anderen for Loop, wird der andere nichtmehr benötigt.
 
 ### Char statt long
+Bei erneutem durschauen des Codes ist uns noch eine weitere Variable aufgefallen die noch nicht auf Char umgeändert wurde.
+
+### nur lebende Zellen ausgeben
+In dem originalen code werden Lebende zellen geschrieben und tote gelöscht.
+```
+if (spielfeld[x][y] == 1) 
+{
+	revers(1);
+}
+else
+{
+ 	revers(0);
+}
+```
+Da dieses if - else langsamer ist als eine einface if - Abfrage werden nur noch die lebenden Zellen abgefragt.
+Um die alten Zellen zu löschen muss aber nun vor jeder Runde ``clrscr();`` aufgerufen werden, damit alle Zellen zuvor einmal gelöscht werden.
+```
+if (spielfeld[x][y] == 1) 
+{
+	revers(1);
+	cputcxy(x, y, 32);
+}
+```
+
 
 

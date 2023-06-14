@@ -14,7 +14,7 @@
 #define XMAX 40
 #define YMAX 25
 #define BOXSIZE 3
-#define ROUNDS 100
+#define ROUNDS 1
 
 //char findNachbarn(char x, char y, char spielfeld[][YMAX]);
 //void initSpielfeld(char spielfeld [][YMAX]);
@@ -117,6 +117,8 @@ int main(void)
 
 
 	while(round < ROUNDS && !kbhit()){
+
+		clrscr(); //clear screen
 		for(y = 0; y< YMAX; ++y){
 			for(x = 0; x< XMAX; ++x)
 			{
@@ -168,15 +170,13 @@ int main(void)
 				}
 
 
-
+				
 				if (spielfeld[x][y] == 1) {
 					revers(1);
+					cputcxy(x, y, 32);
 				}
-				else
-				{
-					revers(0);
-				}
-				cputcxy(x, y, 32);
+
+				
 			}// for x
 		}// for y
 
