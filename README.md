@@ -150,7 +150,7 @@ Durch das Kopieren der If - Abfrage in den anderen for Loop, wird der andere nic
 Bei erneutem durschauen des Codes ist uns noch eine weitere Variable aufgefallen die noch nicht auf Char umgeändert wurde.
 
 
-##Laborzyklus 4
+## Laborzyklus 4:
 
 
 ### Nur lebende Zellen ausgeben
