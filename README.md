@@ -49,9 +49,9 @@ Es gibt auch sehr viele bewegte Objekte, wie zum Beispiel oszillierende Objekte,
 
 ## Verbesserungen
 
-Änderung | Zeit		| FPS	| Verbesserung in % | Verbesserung abslout
+Änderung | Zeit		| FPS	| Verbesserung in % | Verbesserung absolut
 -------- | -------- | ------| ---------- | -----
-Nichts   | 55,3s	| 0,0	|	- | 0%
+Nichts   | 55,3s	| 0,0	| 0% | 0%
 Debugger Ausgaben auskommentieren   |	41,1s   | 0,0 | 26% | 26 %
 Prüferegeln neu geschrieben | 39,0s | 0,0	|	5% | 29%
 gotoxy entfernt | 38,5s | 0,0	|	1% | 30%
