@@ -108,7 +108,9 @@ Damit das Nachbarn array nicht unnötig kopiert werden muss, werden die lebenden
 ### char statt int
 Die lebende, x und y variblen wurden auf chars geändert um geringere datenmenge zu übergeben.
 
+
 ## Laborzyklus 3:
+
 
 ### Switch-Case statt if in prueferegeln
 Switch case abfragen sind schneller durchführbar, als if abfragen.
@@ -147,7 +149,7 @@ Durch das Kopieren der If - Abfrage in den anderen for Loop, wird der andere nic
 ### Char statt long
 Bei erneutem durschauen des Codes ist uns noch eine weitere Variable aufgefallen die noch nicht auf Char umgeändert wurde.
 
-### nur lebende Zellen ausgeben
+### Nur lebende Zellen ausgeben
 In dem originalen code werden Lebende zellen geschrieben und tote gelöscht.
 ```
 if (spielfeld[x][y] == 1) 
