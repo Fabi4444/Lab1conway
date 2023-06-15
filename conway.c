@@ -74,7 +74,7 @@ int main(void)
 	//char lebende;
 	unsigned int round = 0;
 	//char x_init, y_init;
-	char x_spiel, y_spiel;
+	//char x_spiel, y_spiel;
 
 	t = clock ();
 	
@@ -180,9 +180,10 @@ int main(void)
 		}// for y
 
 		//memcpy(spielfeld, temp, XMAX * YMAX);
-		//a = spielfeld; // vertauschen der pointer
-		//spielfeld = temp;
-		//temp = a;
+		a = spielfeld; // vertauschen der pointer
+		spielfeld = temp;
+		temp = a;
+		VIC.addr ^= (VIC.addr & 0x0F) | (0b11 << 4);
 
 		round++;
 	}

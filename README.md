@@ -156,7 +156,7 @@ Bei erneutem Durschauen des Codes ist uns noch eine weitere Variable aufgefallen
 
 ### Nur lebende Zellen ausgeben
 In dem originalen code werden Lebende Zellen geschrieben und tote gelöscht.
-```
+``` C
 if (spielfeld[x][y] == 1) 
 {
 	revers(1);
@@ -166,17 +166,66 @@ else
  	revers(0);
 }
 ```
+urspünglicher code 
+
 Da dieses if - else langsamer ist als eine einfache if - Abfrage werden nur noch die lebenden Zellen abgefragt.
 Um die alten Zellen zu löschen, muss aber nun vor jeder Runde ``clrscr();`` aufgerufen werden, damit alle Zellen zuvor einmal gelöscht werden.
-```
+``` C
 if (spielfeld[x][y] == 1) 
 {
 	revers(1);
 	cputcxy(x, y, 32);
 }
 ```
+neuer Code
 
 ### == 1 entfernt
 Da die Abfrage ``if (spielfeld[x][y])`` das gleiche Ergebnis wie if ``if (spielfeld[x][y] ==1 )`` ergibt,
 und die == Abfrage eine längere Zeit benötigt, haben wir diese geändert. 
 Das funktioniert, weil in C alle Werte, die nicht 0 sind, eine logische 1 sind.
+
+### arrays im Grafikspeicher speichern
+Um sich die Funktionsaufrufe der Print funktionen zu sparen werden die Arrays einfach an die Stelle des Grafikspeichers geschrieben. 
+
+#### pointer Variablen statt 
+Dazu mussen zu allererst das Spielfeld-Array, und das Temp-Array als Pointer gespeichert werden.
+``` C
+char* temp;
+char* spielfeld;
+int main(void)
+{
+	temp = (char *)0x800;
+	spielfeld = (char *)0x400;
+}
+```
+Dieser Pointer kann nun wie ein 1-Dimensionales Array ausgelesen werden. ``spielfeld[5] = 2;``
+Da es aber nun statt einem 2-Dimensionlen Array, nur eine Aneinanderreihung von Pointer Adressen ist muss die Formel ``[x + y * (XMAX - 1)]`` statt ``[x][y]`` verwendet werden.
+
+#### änderung der Speicheradressen auf die der Grafikchip zugreift
+In dem [Wiki zum VIC im C64](https://www.c64-wiki.de/wiki/VIC) bekommt man Informationen wie man die Basisadresse des Bildschirmspeichers ändern kann.
+Damit diese auf die Speicheradresse ``0x400`` zeigt müssen die Bits 4-7 im  ``VIC.addr`` 1 ergeben. 
+Daraus ergibt sich die Zeile ``VIC.addr = (VIC.addr & 0x0F) | (1 << 4);``.
+
+#### eigener Zeichensatz
+Wenn das Programm so ausgeführt wird zeigt der C46 viele @ und a Zeichen an.
+Das liegt daran dass der Zeichencode von 0 einem @, und der Zeichencode von 1 einem a enspricht.
+Um wieder Kästchen zu bekommen müssen nun ein eigener Zeichensatz ersellt werden.
+Dieser wird an der Adresse ``0x2000`` gespeichert, da das der erste freie speicherpaltz nach den anderen Zeichensätzen ist.
+
+``` C
+charset = (char*) 0x2000;
+	memset(charset, 0, 8);
+	memset(&charset[8], 0xFF, 8);
+```
+
+#### Vertauschen der Pointer
+Anstatt nun das ganze Array mit einem ``memcpy`` zu copieren wie es vorher der Fall war, kann man nun einfach nach jeder Runde die beiden Pointeraressen vertauschen.
+``` C
+a = spielfeld; // vertauschen der pointer
+spielfeld = temp;
+temp = a;
+VIC.addr ^= (VIC.addr & 0x0F) | (0b11 << 4);
+```
+Damit muss allerdings auch die Speicheradresse des Grafikspeichers geändert werden.
+Mit einem XOR kann ganz einfach jeder Runde ein 1er zu einem 2er, bzw. ein 2er zu einem 1er geändert werden.
+Damit ändert sich die Adresse auf die der Grafikspeicher zugreift von ``0x400`` auf ``0x800`` bzw. umgekehrt.
