@@ -125,6 +125,8 @@ int main(void)
 
 
 	while(round < ROUNDS && !kbhit()){
+
+		clrscr(); //clear screen
 		for(y = 0; y< YMAX; ++y){
 			for(x = 0; x< XMAX; ++x)
 			{
@@ -175,16 +177,14 @@ int main(void)
 					break;
 				}
 
-				switch (spielfeld[x][y])
-				{
-				case 1:
+
+				
+				if (spielfeld[x][y] == 1) {
 					revers(1);
-					break;
-				default:
-					revers(0);
-					break;
+					cputcxy(x, y, 32);
 				}
-				cputcxy(x, y, 32);
+
+				
 			}// for x
 		}// for y
 
