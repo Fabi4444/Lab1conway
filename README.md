@@ -49,26 +49,27 @@ Es gibt auch sehr viele bewegte Objekte, wie zum Beispiel oszillierende Objekte,
 
 ## Verbesserungen
 
-Änderung | Zeit		| FPS	| Verbesserung in %
--------- | -------- | ------| ----------
-Nichts   | 55,3s	| 0,0	|	-
-Debugger Ausgaben auskommentieren   |	41,1s   | 0,0 | 26%
-Prüferegeln neu geschrieben | 39,0s | 0,0	|	5%
-gotoxy entfernt | 38,5s | 0,0	|	1%
-Fehler ausgebessert | 39,1s | 0,0	|	-2%
-Arrays von int auf char | 37,6s | 0,0 | 4%
-zähle lebende verbessert | 28,8s | 0,0 | 23%
-finde Nachbarn ohne Loop | 15,8s | 0,0 | 45%
-nachbarn array nicht verwenden | 13,4s | 0,0 | 15%
-char statt int | 12,9s | 0,0 | 4%
-switch case statt if | 12,0s | 0,0 | 7%
-funktionsaufrufe eliminieren | 10,2s | 0,0 | 15%
-mehr funktionen eliminieren | 9,9s | 0,1 | 3%
-``++i`` statt ``i++`` | 9,9s | 0,1 | 0%
-anderer compiler command | 7,7s | 0,1 | 22%
-print for Loop | 7,2s | 0,1 | 6%
-char statt long | 6,1s | 0,1 | 15% 
-nur lebende Zellen ausgeben | 5,7 | 0,1 | x
+Änderung | Zeit		| FPS	| Verbesserung in % | Verbesserung abslout
+-------- | -------- | ------| ---------- | -----
+Nichts   | 55,3s	| 0,0	|	- | 0%
+Debugger Ausgaben auskommentieren   |	41,1s   | 0,0 | 26% | 26 %
+Prüferegeln neu geschrieben | 39,0s | 0,0	|	5% | 29%
+gotoxy entfernt | 38,5s | 0,0	|	1% | 30%
+Fehler ausgebessert | 39,1s | 0,0	|	-2% | 29%
+Arrays von int auf char | 37,6s | 0,0 | 4% | 32%
+zähle lebende verbessert | 28,8s | 0,0 | 23% | 48%
+finde Nachbarn ohne Loop | 15,8s | 0,0 | 45% | 71%
+nachbarn array nicht verwenden | 13,4s | 0,0 | 15% | 76%
+char statt int | 12,9s | 0,0 | 4% | 77%
+switch case statt if | 12,0s | 0,0 | 7% | 78%
+funktionsaufrufe eliminieren | 10,2s | 0,0 | 15% | 82%
+mehr funktionen eliminieren | 9,9s | 0,1 | 3% | 82%
+``++i`` statt ``i++`` | 9,9s | 0,1 | 0% | 82%
+anderer compiler command | 7,7s | 0,1 | 22% | 86%
+print for Loop | 7,2s | 0,1 | 6% | 87%
+char statt long | 6,1s | 0,1 | 15% | 89%
+nur lebende Zellen ausgeben | 5,7 | 0,1 | 7% | 90%
+== 1 entfernt | 5,3 | 0,1 | 7% | 90%
 
 ![Graph](/bilder/Aenderung_Conway_graph_5.png)
 Grafik 1: Zeit über die Änderung & verbesserung in %
@@ -168,5 +169,7 @@ if (spielfeld[x][y] == 1)
 }
 ```
 
-
-
+### == 1 entfernt
+Da die abfrage ``if (spielfeld[x][y])`` das gleiche Ergebins wie if ``if (spielfeld[x][y] ==1 )`` ergibt,
+und die == abfrage eine längere Zeit benötigt, haben wir diese geändert. 
+Das funktioniert weil in C alle werte die nicht 0 sind, eine logische 1 sind.
