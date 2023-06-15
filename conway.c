@@ -73,6 +73,11 @@ int main(void)
 	char y;
 	//char lebende;
 	unsigned int round = 0;
+	signed char x0;
+	signed char x2;
+	signed char y0;
+	signed char y2;
+	char lebende;
 	//char x_init, y_init;
 	//char x_spiel, y_spiel;
 
@@ -93,41 +98,53 @@ int main(void)
 	text = textcolor(COLOR_WHITE);
 	
 
-	//char *buffer = (char)0x400;
-	temp = (char *)0x800;
-	spielfeld = (char *)0x400;
+
+	temp = (char *)0x2C00;
+	spielfeld = (char *)0x2800;
 	charset = (char*) 0x2000;
 	// print
 	memset(charset, 0, 8);
 	memset(&charset[8], 0xFF, 8);
-	//VIC.addr = (VIC.addr & 0x0F) | (1 << 4);
-	VIC.addr = 0x18;
+	/*
+	
+VIC-Speicherkontrollregister VIC.addr
+Bit 7..4: Basisadresse des Bildschirmspeichers in aktueller 16-KByte-VIC-Bank = 1024*(Bit 7…4)[4]
+
+0x400-0x800 frei
+0x800 scheinbar besetzt (c programm)
+0x2800 => 0xA = 0b1010
+0x2C00 => 0xB = 0b1011
+
+Im Textmodus:
+
+Bit 3..1: Basisadresse des Zeichensatzes = 2048*(Bit 3…1).
+Bit 0: Nicht genutzt.
+0x1000-0x2000 ist besetzt => Bit 3..1  = 0x4 = 0b100
+=> 0x2000-0x2800 besetzt
+
+  7654 3210
+0b1010 1000 => 0xA8
+0b1011 1000 => 0xA9
+            => Toggle bit 4
+	*/
+	VIC.addr = 0xA8;
 	memcpy(spielfeld, array, XMAX * YMAX);
-	/*for (y_spiel = 0; y_spiel < YMAX; ++y_spiel) {
-		for (x_spiel = 0; x_spiel < XMAX; ++x_spiel) {
-			//spielfeld[x_spiel + y_spiel * (XMAX - 1)] = array[x_spiel][y_spiel];
-			if (spielfeld[x_spiel+y_spiel * (XMAX - 1)]) {
-				revers(1);
-				cputcxy(x_spiel, y_spiel, 32);
-			}
-		}
-	}*/
-	//spielfeld[5] = 2;
 
 	
 	while (round < ROUNDS && !kbhit()) {
 
 		//clrscr(); //clear screen
+		//TODO statt 2 loops nur 1 loop => dann mittels addition statt multiplikation die koordinaten berrechnen
 		for (y = 0; y < YMAX; ++y) {
 			for (x = 0; x < XMAX; ++x)
 			{
 				//cprintf("%2d %2d",x , y);
 				//gehe über alle nachbarn
-				signed char x0 = x - 1;
-				signed char x2 = x + 1;
-				signed char y0 = y - 1;
-				signed char y2 = y + 1;
-				char lebende = 0;
+			  x0 = x - 1;
+	      x2 = x + 1;
+	      y0 = y - 1;
+	      y2 = y + 1;
+				lebende = 0;
 
 				if (x0 < 0) {
 					x0 = XMAX - 1;
@@ -135,31 +152,32 @@ int main(void)
 				if (x2 > XMAX - 1) {
 					x2 = 0;
 				}
+				//TODO y0 in äusseren loop (for y)
 				if (y0 < 0) {
 					y0 = YMAX - 1;
 				}
 				if (y2 > YMAX - 1) {
 					y2 = 0;
 				}
-				lebende += spielfeld[x0 + y0 * (XMAX - 1)];
+				
+				//TODO y0*(XMAX-1) in äusseren loop (for y)
+				lebende = spielfeld[x0 + y0 * (XMAX - 1)];
 				lebende += spielfeld[x0 + y * (XMAX - 1)];
 				lebende += spielfeld[x0 + y2 * (XMAX - 1)];
+				
 				lebende += spielfeld[x + y0 * (XMAX - 1)];
-				//nachbarn[1][1] = spielfeld[x][y];
 				lebende += spielfeld[x + y2 * (XMAX - 1)];
-				lebende += spielfeld[x2 + y0 * (XMAX - 1)];
-				lebende += spielfeld[x + y * (XMAX - 1)];
-				lebende += spielfeld[x2 + y2 * (XMAX - 1)];
 
-				//cprintf("%d",lebende /7 );
-				//hier kommen meine regeln
+
+				lebende += spielfeld[x2 + y0 * (XMAX - 1)];
+				lebende += spielfeld[x2 + y * (XMAX - 1)];
+				lebende += spielfeld[x2 + y2 * (XMAX - 1)];
 
 				switch (lebende)
 				{
 				case 2:
 					temp[x + y * (XMAX - 1)] = spielfeld[x + y * (XMAX - 1)];
 					break;
-
 				case 3:
 					temp[x + y * (XMAX - 1)] = 1;
 					break;
@@ -169,13 +187,6 @@ int main(void)
 				}
 
 
-
-				//if (spielfeld[xy]) {
-				//	revers(1);
-				//	cputcxy(x, y, 32);
-				//}
-
-
 			}// for x
 		}// for y
 
@@ -183,7 +194,8 @@ int main(void)
 		a = spielfeld; // vertauschen der pointer
 		spielfeld = temp;
 		temp = a;
-		VIC.addr ^= (VIC.addr & 0x0F) | (0b11 << 4);
+		
+		VIC.addr ^= (1<<4);//VIC.addr ^= (VIC.addr & 0x0F) | (0b11 << 4);
 
 		round++;
 	}
