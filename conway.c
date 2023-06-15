@@ -108,16 +108,10 @@ int main(void)
 	for (y_spiel = 0; y_spiel < YMAX; ++y_spiel) {
 		for (x_spiel = 0; x_spiel < XMAX; ++x_spiel) {
 			spielfeld[x_spiel][y_spiel] = array[x_spiel][y_spiel];
-			switch (spielfeld[x_spiel][y_spiel])
-			{
-			case 1:
+			if (spielfeld[x_spiel][y_spiel]) {
 				revers(1);
-				break;
-			default:
-				revers(0);
-				break;
+				cputcxy(x_spiel, y_spiel, 32);
 			}
-			cputcxy(x_spiel, y_spiel, 32);
 		}
 	}
 	
@@ -125,6 +119,8 @@ int main(void)
 
 
 	while(round < ROUNDS && !kbhit()){
+
+		clrscr(); //clear screen
 		for(y = 0; y< YMAX; ++y){
 			for(x = 0; x< XMAX; ++x)
 			{
@@ -175,16 +171,14 @@ int main(void)
 					break;
 				}
 
-				switch (spielfeld[x][y])
-				{
-				case 1:
+
+				
+				if (spielfeld[x][y]) {
 					revers(1);
-					break;
-				default:
-					revers(0);
-					break;
+					cputcxy(x, y, 32);
 				}
-				cputcxy(x, y, 32);
+
+				
 			}// for x
 		}// for y
 
