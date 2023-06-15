@@ -72,6 +72,7 @@ nur lebende Zellen ausgeben | 5,7 | 0,1 | 7% | 90%
 == 1 entfernt | 5,3 | 0,1 | 7% | 90%
 
 ![Graph](/bilder/coole_grafik.PNG)
+
 Grafik 1: Zeit über die Änderung & verbesserung in %
 
 
@@ -79,34 +80,34 @@ Grafik 1: Zeit über die Änderung & verbesserung in %
 
 
 ### Debugger ausgaben auskommentieren
-Bei dem Ürsprünglichen Version des Programms werden die Anzahl der lebenden Nachbarn ausgegeben.
+Bei der ursprünglichen Version des Programms werden die Anzahl der lebenden Nachbarn ausgegeben.
 Um die Zeit für diese Ausgabe zu sparen haben wir sie vorerst nur auskommentiert.
-Damit kann man diese Ausga später wieder Verwenden falls das Programm von uns "kapputt verbessert" wird, und wir es wieder debuggen müssen.
+Damit kann man diese Ausgabe später wieder Verwenden, falls das Programm von uns "kaputt verbessert" wird, und wir es wieder debuggen müssen.
 
 ### Prüferegeln neu geschrieben
-Die prüferegeln-Funktion war sehr inneffizient geschrieben welshab wir die ganze Funktion neu geschrieben haben.
+Die prüferegeln-Funktion war sehr inneffizient geschrieben weshalb wir die ganze Funktion neu geschrieben haben.
 
 ### gotoxy entfernt
-Nach analysieren des codes haben wir bemerkt, dass der ausdruck ``gotoxy(0, 0)`` unnötig ist, da diese funktion später wieder aufgerufen, und die Position somit überschrieben wird. 
+Nach analysieren des Codes haben wir bemerkt, dass der Ausdruck ``gotoxy(0, 0)`` unnötig ist, da diese Funktion später wieder aufgerufen, und die Position somit überschrieben wird. 
 
 ### Fehler ausgebessert
-Wir haben einen Fehler im Programm ausgebessert, der einer anderen Gruppe aufgefallen ist. Dadurch wurde das Programm allerdings wider langsamer.
+Wir haben einen Fehler im Programm ausgebessert, der einer anderen Gruppe aufgefallen ist. Dadurch wurde das Programm allerdings wieder langsamer.
 
 
 ## Laborzyklus 2:
 
 
 ### Arrays von int auf char
-Da char nur 1 byte zur speicherung bzw. berechnung benötigt ist es schneller char arrays anstelle von integers zu verwenden.
+Da char nur 1 Byte zur Speicherung bzw. Berechnung benötigt ist es schneller char arrays anstelle von integers zu verwenden.
 
-### Zähle lebende & finde nachbarn
-Die innefizenten for-loops aus den zaehlLebende, und findNachbarn die durch die alle Zellen in dem nachbarn-array gehen, wurden durch eine hard-gecodete liste ersetzt.
+### Zähle lebende & finde Nachbarn
+Die ineffizienten for-loops aus den zaehlLebende, und findNachbarn die durch die alle Zellen in dem Nachbarn-array gehen, wurden durch eine hard-gecodete liste ersetzt.
 
 ### Nachbarn array nicht verwenden 
-Damit das Nachbarn array nicht unnötig kopiert werden muss, werden die lebenden einfach bereits im finde nachbarn gezählt.
+Damit das Nachbarn array nicht unnötig kopiert werden muss, werden die lebenden einfach bereits im finde Nachbarn gezählt.
 
 ### char statt int
-Die lebende, x und y variblen wurden auf chars geändert um geringere datenmenge zu übergeben.
+Die lebende, x und y variablen wurden auf chars geändert, um geringere Datenmenge zu übergeben.
 
 
 ## Laborzyklus 3:
@@ -116,15 +117,15 @@ Die lebende, x und y variblen wurden auf chars geändert um geringere datenmenge
 Switch case abfragen sind schneller durchführbar, als if abfragen.
 Allerdings können nur ``==`` abfragen machen, und keine ``<`` oder ``>`` abfragen.
 Dadurch können nicht alle if-abfragen mit Switch-Case ersetz werden.
-Wir haben die funktion ``pruefeRegeln`` mit verändernt.
+Wir haben die Funktion ``pruefeRegeln`` mit verändert.
 
 ### Funktionsaufrufe eliminieren
-Jeder funktionsaufruf benötigt zeit, um die an die richige Stelle im Programm zu springen, und danach wieder zurück zu kommen.
-Das wird umgangen indem das Ganze Programm einfach untereinander "in einer Wurst" gepackt wurde.
+Jeder Funktionsaufruf benötigt Zeit, um die an die richtige Stelle im Programm zu springen, und danach wieder zurückzukommen.
+Das wird umgangen, indem das Ganze Programm einfach untereinander "in einer Wurst" gepackt wurde.
 
 ### Funktionsaufrufe printSpielfeld / initSpielfeld eliminieren
-Als diese Funktionenn einfach so kopiert wurden, hat der Compiler den Fehler ``Mixed declarations and code are not supported`` gemolden.
-Grund dafür war, dass die deklarationen der Variablen alle an den Anfang gehören.
+Als diese Funktionen einfach so kopiert wurden, hat der Compiler den Fehler ``Mixed declarations and code are not supported`` gemeldet.
+Grund dafür war, dass die Deklarationen der Variablen alle an den Anfang gehören.
 
 ### ``++i`` statt ``i++``
 In der [Dokumentation des c65 compilers](https://cc65.github.io/doc/coding.html), stand dass ``++i`` statt ``i++`` verwendet werden soll.
@@ -143,18 +144,18 @@ Das Flag ``Oirs`` ist eine Kombination aus 3 Optimierungs-Flags:
 1. ``Os`` - Optimize code, inline standard funtions
 
 ### Print for loop weggelassen
-Die Print funktionen waren in einem eingenen for loop.
-Durch das Kopieren der If - Abfrage in den anderen for Loop, wird der andere nichtmehr benötigt.
+Die Print Funktionen waren in einem eigenen for loop.
+Durch das Kopieren der If - Abfrage in den anderen for Loop, wird der andere loop nichtmehr benötigt.
 
 ### Char statt long
-Bei erneutem durschauen des Codes ist uns noch eine weitere Variable aufgefallen die noch nicht auf Char umgeändert wurde.
+Bei erneutem Durschauen des Codes ist uns noch eine weitere Variable aufgefallen, die noch nicht auf Char umgeändert wurde. Und zwar: ``x_spiel, y_spiel, x_init und y_init``.
 
 
 ## Laborzyklus 4:
 
 
 ### Nur lebende Zellen ausgeben
-In dem originalen code werden Lebende zellen geschrieben und tote gelöscht.
+In dem originalen code werden Lebende Zellen geschrieben und tote gelöscht.
 ```
 if (spielfeld[x][y] == 1) 
 {
@@ -165,8 +166,8 @@ else
  	revers(0);
 }
 ```
-Da dieses if - else langsamer ist als eine einface if - Abfrage werden nur noch die lebenden Zellen abgefragt.
-Um die alten Zellen zu löschen muss aber nun vor jeder Runde ``clrscr();`` aufgerufen werden, damit alle Zellen zuvor einmal gelöscht werden.
+Da dieses if - else langsamer ist als eine einfache if - Abfrage werden nur noch die lebenden Zellen abgefragt.
+Um die alten Zellen zu löschen, muss aber nun vor jeder Runde ``clrscr();`` aufgerufen werden, damit alle Zellen zuvor einmal gelöscht werden.
 ```
 if (spielfeld[x][y] == 1) 
 {
@@ -176,6 +177,6 @@ if (spielfeld[x][y] == 1)
 ```
 
 ### == 1 entfernt
-Da die abfrage ``if (spielfeld[x][y])`` das gleiche Ergebins wie if ``if (spielfeld[x][y] ==1 )`` ergibt,
-und die == abfrage eine längere Zeit benötigt, haben wir diese geändert. 
-Das funktioniert weil in C alle werte die nicht 0 sind, eine logische 1 sind.
+Da die Abfrage ``if (spielfeld[x][y])`` das gleiche Ergebnis wie if ``if (spielfeld[x][y] ==1 )`` ergibt,
+und die == Abfrage eine längere Zeit benötigt, haben wir diese geändert. 
+Das funktioniert, weil in C alle Werte, die nicht 0 sind, eine logische 1 sind.
