@@ -71,7 +71,7 @@ char statt long | 6,1s | 0,1 | 15% | 89%
 nur lebende Zellen ausgeben | 5,7 | 0,1 | 7% | 90%
 == 1 entfernt | 5,3 | 0,1 | 7% | 90%
 
-![Graph](/bilder/Aenderung_Conway_graph_5.png)
+![Graph](/bilder/coole_grafik.PNG)
 Grafik 1: Zeit über die Änderung & verbesserung in %
 
 
