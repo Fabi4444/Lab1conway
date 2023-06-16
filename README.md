@@ -185,10 +185,10 @@ und die == Abfrage eine längere Zeit benötigt, haben wir diese geändert.
 Das funktioniert, weil in C alle Werte, die nicht 0 sind, eine logische 1 sind.
 
 ### arrays im Grafikspeicher speichern
-Um sich die Funktionsaufrufe der Print funktionen zu sparen werden die Arrays einfach an die Stelle des Grafikspeichers geschrieben. 
+Um sich die Funktionsaufrufe der Print-Funktionen zu sparen, werden die Arrays einfach an die Stelle des Grafikspeichers geschrieben. 
 
 #### pointer Variablen statt 
-Dazu mussen zu allererst das Spielfeld-Array, und das Temp-Array als Pointer gespeichert werden.
+Dazu müssen zu allererst das Spielfeld-Array, und das Temp-Array als Pointer gespeichert werden.
 ``` C
 char* temp;
 char* spielfeld;
@@ -208,9 +208,9 @@ Daraus ergibt sich die Zeile ``VIC.addr = (VIC.addr & 0x0F) | (1 << 4);``.
 
 #### eigener Zeichensatz
 Wenn das Programm so ausgeführt wird zeigt der C46 viele @ und a Zeichen an.
-Das liegt daran dass der Zeichencode von 0 einem @, und der Zeichencode von 1 einem a enspricht.
+Das liegt daran dass der Zeichencode von 0 einem @, und der Zeichencode von 1 einem a entspricht.
 Um wieder Kästchen zu bekommen müssen nun ein eigener Zeichensatz ersellt werden.
-Dieser wird an der Adresse ``0x2000`` gespeichert, da das der erste freie speicherpaltz nach den anderen Zeichensätzen ist.
+Dieser wird an der Adresse ``0x2000`` gespeichert, da das der erste freie Speicherpaltz nach den anderen Zeichensätzen ist.
 
 ``` C
 charset = (char*) 0x2000;
@@ -219,7 +219,7 @@ charset = (char*) 0x2000;
 ```
 
 #### Vertauschen der Pointer
-Anstatt nun das ganze Array mit einem ``memcpy`` zu copieren wie es vorher der Fall war, kann man nun einfach nach jeder Runde die beiden Pointeraressen vertauschen.
+Anstatt nun das ganze Array mit einem ``memcpy`` zu kopieren wie es vorher der Fall war, kann man nun einfach nach jeder Runde die beiden Pointeradressen vertauschen.
 ``` C
 a = spielfeld; // vertauschen der pointer
 spielfeld = temp;
@@ -229,3 +229,11 @@ VIC.addr ^= (VIC.addr & 0x0F) | (0b11 << 4);
 Damit muss allerdings auch die Speicheradresse des Grafikspeichers geändert werden.
 Mit einem XOR kann ganz einfach jeder Runde ein 1er zu einem 2er, bzw. ein 2er zu einem 1er geändert werden.
 Damit ändert sich die Adresse auf die der Grafikspeicher zugreift von ``0x400`` auf ``0x800`` bzw. umgekehrt.
+
+Da diese Optimierung sehr Komplex ist konnte das Programm aufgrund von Zeitmangel nichtmehr in funktionierenden Code Verbessert werden.
+Der letzte funktionierende Version der conway.c Datei ist der Commit ``== 1 entfernt`` mit dem Hash ``175ef976443565da6adf76e056bf31993cd50289``.
+
+## Weitere Optimierungsmöglichkeiten
+* In dem Code sind noch viele Berechnungen für y Koordinaten die außerhalb des einen Loop geschrieben werden können, weil sie immer gleich sind.
+* Nur 1 Loop und statt Multiplikationen Additionen
+* Die Kooridnatenberechnung mittles Lookup-Tables
