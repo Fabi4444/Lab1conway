@@ -184,10 +184,10 @@ Da die Abfrage ``if (spielfeld[x][y])`` das gleiche Ergebnis wie if ``if (spielf
 und die == Abfrage eine längere Zeit benötigt, haben wir diese geändert. 
 Das funktioniert, weil in C alle Werte, die nicht 0 sind, eine logische 1 sind.
 
-### arrays im Grafikspeicher speichern
+### Arrays im Grafikspeicher speichern
 Um sich die Funktionsaufrufe der Print-Funktionen zu sparen, werden die Arrays einfach an die Stelle des Grafikspeichers geschrieben. 
 
-#### pointer Variablen statt 
+#### Pointer Variablen statt 
 Dazu müssen zu allererst das Spielfeld-Array, und das Temp-Array als Pointer gespeichert werden.
 ``` C
 char* temp;
@@ -201,12 +201,12 @@ int main(void)
 Dieser Pointer kann nun wie ein 1-Dimensionales Array ausgelesen werden. ``spielfeld[5] = 2;``
 Da es aber nun statt einem 2-Dimensionlen Array, nur eine Aneinanderreihung von Pointer Adressen ist muss die Formel ``[x + y * (XMAX - 1)]`` statt ``[x][y]`` verwendet werden.
 
-#### änderung der Speicheradressen auf die der Grafikchip zugreift
+#### Änderung der Speicheradressen auf die der Grafikchip zugreift
 In dem [Wiki zum VIC im C64](https://www.c64-wiki.de/wiki/VIC) bekommt man Informationen wie man die Basisadresse des Bildschirmspeichers ändern kann.
 Damit diese auf die Speicheradresse ``0x400`` zeigt müssen die Bits 4-7 im  ``VIC.addr`` 1 ergeben. 
 Daraus ergibt sich die Zeile ``VIC.addr = (VIC.addr & 0x0F) | (1 << 4);``.
 
-#### eigener Zeichensatz
+#### Eigener Zeichensatz
 Wenn das Programm so ausgeführt wird zeigt der C46 viele @ und a Zeichen an.
 Das liegt daran dass der Zeichencode von 0 einem @, und der Zeichencode von 1 einem a entspricht.
 Um wieder Kästchen zu bekommen müssen nun ein eigener Zeichensatz ersellt werden.
