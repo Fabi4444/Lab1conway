@@ -230,6 +230,11 @@ Damit muss allerdings auch die Speicheradresse des Grafikspeichers geändert wer
 Mit einem XOR kann ganz einfach jeder Runde ein 1er zu einem 2er, bzw. ein 2er zu einem 1er geändert werden.
 Damit ändert sich die Adresse auf die der Grafikspeicher zugreift von ``0x400`` auf ``0x800`` bzw. umgekehrt.
 
+### Fehleausbesserung
+Mit diesen Änderungen kam das Programm nicht weiter als die Initialisierung.
+Das lag daran, dass die Speicheradressen ``0x800`` bereits von anderen C-Variablen besetzt war.
+
+
 Da diese Optimierung sehr Komplex ist konnte das Programm aufgrund von Zeitmangel nichtmehr in funktionierenden Code Verbessert werden.
 Der letzte funktionierende Version der conway.c Datei ist der Commit ``== 1 entfernt`` mit dem Hash ``175ef976443565da6adf76e056bf31993cd50289``.
 
